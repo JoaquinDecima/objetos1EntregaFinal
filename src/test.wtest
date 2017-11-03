@@ -1,0 +1,43 @@
+import companiero.*
+import materiales.material.*
+import materiales.fleeb.*
+import materiales.lata.*
+import materiales.materia_oscura.*
+import materiales.cable.*
+
+test "Morty puede recolectar"{
+	var morty = new Personaje (100)
+	var material = new Material (30,10,false,40)
+	assert.that(morty.puedeRecolectar(material))
+}
+
+test "Morty recolecta"{
+	var morty = new Personaje (100)
+	var material = new Material (30,10,false,40)
+	assert.that(morty.puedeRecolectar(material))
+	// Como validar que no arroja una excepcion? => Validamos lo que agregamos a la mochila de rick 
+	//assert.throwsExceptionWithMessage("NO PUEDE RECOLECTAR ESTE MATERIAL", {morty.recolectar(material)})
+	
+	 
+}
+test "Morty No puede recolectar"{
+	var morty = new Personaje (1)
+	var material = new Material (30,10,false,40)
+	assert.throwsExceptionWithMessage("NO PUEDE RECOLECTAR ESTE MATERIAL",{morty.recolectar(material)})
+}
+
+test "Morty le pasa su mochila a Roberto"{
+	var morty = new Personaje (100)
+	var roberto = new Personaje (10)
+	var materialA = new Material (30,10,false,40)
+	var materialB = new Material (10,20,true,10)
+	assert.that(morty.puedeRecolectar(materialA))
+	assert.that(morty.puedeRecolectar(materialB))
+	morty.recolectar(materialA)
+	morty.recolectar(materialB)
+
+	morty.darObjetosA(roberto)
+	assert.that(morty.puedeRecolectar(materialB))
+	
+	//falta validar que roberto tenga lo que morty le dio
+}
