@@ -5,9 +5,13 @@
  * dado que tambien puede ser otro en un universo palalelo.
  */
  
- //Yo arranque llamando Personaje a Morty pero si quieren se lo cambiamos a companiero o lo que prefieran
-
-class Personaje{
+ import rick.*
+ import materiales.cable.*
+ import materiales.fleeb.*
+ import materiales.lata.*
+ import materiales.materia_oscura.*
+ 
+class Companiero{
 	var energia
 	var mochila=[]
 	
@@ -17,20 +21,22 @@ class Personaje{
 	
 	method puedeRecolectar(unMaterial) = unMaterial.puedeSerRecolectadoPor(self) 
 
+	method energia() = energia
+	
 	method recolectar(unMaterial){
 		//La recolecta (si puede) y se la guarda en su mochila.
 		if (not self.puedeRecolectar(unMaterial)) self.error ("NO PUEDE RECOLECTAR ESTE MATERIAL")
 		self.guardar(unMaterial)
  
-		/*Al recolectar materiales radiactivos, la energía de Morty disminuye en la cantidad 
-		requerida luego de la acción.*/
+		/*Al recolectar materiales radiactivos, la energï¿½a de Morty disminuye en la cantidad 
+		requerida luego de la acciï¿½n.*/
 //		if (unMaterial.esRadioactivo()) self.disminuirEnergia(unMaterial.energiaQueAfecta())  	
 		self.actualizarEnergia(unMaterial.energiaQueAfecta())
 	} 
 	
 	
 	method darObjetosA(unCompanero){
-		// Saca todas las cosas de su mochila y se las pasa a un compañero
+		// Saca todas las cosas de su mochila y se las pasa a un compaï¿½ero
 		mochila.forEach({material=>
 									unCompanero.guardar(material)
 									self.quitar(material)
@@ -50,6 +56,7 @@ class Personaje{
 	
 	method actualizarEnergia(cantidad){
 		energia+=cantidad
-	}
-	method energia()=energia
+	}	
 }
+
+object morty inherits Companiero(100){}

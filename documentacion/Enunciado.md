@@ -1,21 +1,20 @@
-/*
 Primera Parte: Morty
-Hay múltiples cosas que Morty puede encontrar en este planeta, de los cuales nos interesa saber: 
+Hay multiples cosas que Morty puede encontrar en este planeta, de los cuales nos interesa saber: 
 	* Sus gramos de metal 
-	* Cuánta electricidad pueden conducir
+	* Cuanta electricidad pueden conducir
 	* Si son radiactivos
-	* Cuánta energía produce.
+	* Cuanta energia produce.
 	
-Morty tiene una cantidad de energía que cambia a medida que se va cansando o se recupera.
+Morty tiene una cantidad de energia que cambia a medida que se va cansando o se recupera.
  
-Para recolectar un elemento necesita energía, tantos puntos de energía como gramos de metal posea el
+Para recolectar un elemento necesita energia, tantos puntos de energia como gramos de metal posea el
 material, aunque algunos materiales tienen requerimientos especiales.
 * NOTA: Se delega el control del puedeRecolectar al elemento
 
-Además Morty no puede tener en su mochila más de 3 materiales a la vez.
+Ademas Morty no puede tener en su mochila mas de 3 materiales a la vez.
 * NOTA: se elimina el primero o no puedo recolectar?
  
-Al recolectar materiales radiactivos, la energía de Morty disminuye en la cantidad requerida luego de la acción.
+Al recolectar materiales radiactivos, la energia de Morty disminuye en la cantidad requerida luego de la accion.
 * NOTA: La energia que disminuye es la cantidad de gramos del elemento a recolectar?
 
 Los materiales que Morty puede encontrar son:
@@ -26,21 +25,21 @@ Los materiales que Morty puede encontrar son:
 			*   Puede producir electricidad, 0.1 Amperes por gramo de metal que posee.
 	* Cable: Tiene:
 			* 	Una longitud en metros 
-			* 	Una sección en cm² (la superficie transversal). 
-			*   La cantidad de metal es 1 gramo por cm³ ((longitud / 1000) * sección)
-			*   Puede conducir electricidad hasta 3 Amperes por cm² de sección.
+			* 	Una seccion en cmï¿½ (la superficie transversal). 
+			*   La cantidad de metal es 1 gramo por cmï¿½ ((longitud / 1000) * seccion)
+			*   Puede conducir electricidad hasta 3 Amperes por cmï¿½ de seccion.
 			*   No genera electricidad 
 			*   No es radiactivo.
 
 	* Fleeb: 
 		* Le gusta comer materiales. 
 		* Tiene tanto metal como el que haya consumido. 
-		* Cuando tiene más de 15 años se vuelve radioactivo. 
-		* Produce tanta electricidad como el material que haya comido que más electricidad produzca. 
+		* Cuando tiene mas de 15 aÃ±os se vuelve radioactivo. 
+		* Produce tanta electricidad como el material que haya comido que mas electricidad produzca. 
 		* Conduce la electricidad como el material que haya comido que menos electricidad conduzca.
 		
-		Morty, Al tratar de recolectarlo, se le escapa, por lo tanto se necesita el doble de la energía que se
-		necesita para recolectar otra cosa, pero al recolectarlo el Fleeb le da energía a Morty y esta se incrementa
+		Morty, Al tratar de recolectarlo, se le escapa, por lo tanto se necesita el doble de la energia que se
+		necesita para recolectar otra cosa, pero al recolectarlo el Fleeb le da energia a Morty y esta se incrementa
 		en 10 puntos, salvo que sea radiactivo.
 
 	* Materia Oscura: 
@@ -48,35 +47,35 @@ Los materiales que Morty puede encontrar son:
 		*   La conductividad es la mitad de la base
 		*   La cantidad de metal es la misma que la base
 		*   No es radiactivo
-		*   Genera el doble de energía que la base.
+		*   Genera el doble de energia que la base.
 
 
-En este punto nos gustaría poder preguntarle o pedirle a Morty:
+En este punto nos gustaria poder preguntarle o pedirle a Morty:
 	* puedeRecolectar(unMaterial)
 	* recolectar(unMaterial): la recolecta (si puede) y se la guarda en su mochila.
-	* darObjetosA(unCompanero): saca todas las cosas de su mochila y se las pasa a un compañero
+	* darObjetosA(unCompanero): saca todas las cosas de su mochila y se las pasa a un compaiero
 
 
 
 Segunda Parte: Rick
 	* Rick realiza experimentos
 	* Aquellos objetos necesarios que tiene en su mochila (aquellos que le dio su
-	  compañero, Morty en este caso), con esto transforma materiales en otros materiales
-	* algunos experimentos afectan a su compañero.
+	  compaiero, Morty en este caso), con esto transforma materiales en otros materiales
+	* algunos experimentos afectan a su compaiero.
 
 Los experimentos que Rick puede realizar son:
-	*	Construir una Batería: 
+	*	Construir una Bateria: 
 			* 	Se necesita 
-					* un material que tenga más de 200 gramos de metal
+					* un material que tenga mas de 200 gramos de metal
 					* y un material radiactivo. 
 
 			*   No conduce la electricidad
 			*   El metal es la suma del metal de sus componentes
 			*   La electricidad que genera es 2 Amperes por gramo de metal. 
 			*   Siempre es radiactiva
-			*   al construirse el compañero de rick pierde 5 puntos de energía.
+			*   al construirse el compaÃ±ero de rick pierde 5 puntos de energia.
 
-	*	Construir un Circuito: Requiere de al menos un material que conduzcan como mínimo 5 amperes.
+	*	Construir un Circuito: Requiere de al menos un material que conduzcan como minimo 5 amperes.
 			*  El circuito es construido con todos los materiales que Rick tiene en la mochila 
      			que conducen al menos 5 amperes. 
 			* El circuito conduce el triple que la suma de lo que conducen sus componentes
@@ -84,23 +83,23 @@ Los experimentos que Rick puede realizar son:
 			* El metal es la suma del metal de sus componentes
 			* y no genera electricidad.
 
-	*   Shock eléctrico: Sirve para incrementar la energía de su compañero. 
+	*   Shock electrico: Sirve para incrementar la energia de su compaÃ±ero. 
 		* Para eso se necesita:
-			* 	un generador eléctrico 
+			* 	un generador electrico 
 			*   y un material conductivo. 
-			* 	Se incrementa la energía en tantos puntos como la capacidad del 
-				generador eléctrico * la capacidad conductiva del conductor.
+			* 	Se incrementa la energia en tantos puntos como la capacidad del 
+				generador electrico * la capacidad conductiva del conductor.
 
 		Queremos poder pedirle a Rick:
 			* recibir(unosMateriales): recibe unos materiales
 			* experimentosQuePuedeRealizar(): 
-				* 	Rick sabe un conjunto de experimentos, pero queremos saber de esos cuáles 
+				* 	Rick sabe un conjunto de experimentos, pero queremos saber de esos cuales 
   				    son los que puede hacer con las cosas que tiene actualmente en su mochila.
 
 				* realizar(unExperimento): Para realizar un experimento se cumplen los siguientes pasos:
 						* Se buscan los materiales necesarios de la mochila de Rick
 						* Se remueven los materiales de la mochila de Rick.
 						* Se aplica el efecto del experimento
-							Ppor ejemplo si se trata de la construcción de la batería, se debe agregar una nueva batería a la mochila de Rick,
-							*  pero si se trata de un shock eléctrico se debe incrementar la energía del compañero de Rick.
+							Ppor ejemplo si se trata de la construccion de la bateria, se debe agregar una nueva bateria a la mochila de Rick,
+							*  pero si se trata de un shock electrico se debe incrementar la energia del compaiero de Rick.
  */
