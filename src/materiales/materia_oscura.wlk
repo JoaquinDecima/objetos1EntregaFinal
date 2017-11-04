@@ -1,20 +1,29 @@
-import lata.Lata
+import cable.*
+import fleeb.*
+import lata.*
+import material.*
 
 class MateriaOscura inherits Lata{
-	/* Materia Oscura: 
-		* 	Contiene un material base. 
-		*   La conductividad es la mitad de la base
-		*   La cantidad de metal es la misma que la base
-		*   No es radiactivo
-		*   Genera el doble de energía que la base.
- 	*/
 
  	var materialBase
  	
- 	constructor (_gramos,unMaterial)=super(_gramos,unMaterial.electricidad()/2,false,2*unMaterial.energia()){
- 		materialBase=unMaterial
- 		metal=unMaterial.metal()
+ 	constructor (oMaterial)=super(oMaterial.cantMetal()){
+ 		materialBase = oMaterial
+ 		}
+ 	
+ 	override method cuantaElectricidadConduce(){
+ 		if (materialBase.puedeConducirElectricidad()){
+ 			return materialBase.cuantaElectricidadConduce() / 2
+ 		}
+ 		
+ 		return super()
  	}
  	
- 	
+ 	override method cuantaElectricidadGenera(){
+ 		if (materialBase.puedeGenerarElectricidad()){
+ 			return materialBase.cuantaElectricidadGenera() * 2
+ 		}
+ 		
+ 		return super()
+ 	}
 }
