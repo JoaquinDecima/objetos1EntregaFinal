@@ -11,8 +11,12 @@ class Fleeb inherits Lata{
 		comio.add(oMaterial)
 	}
 	
-	override method energiaQueAfecta(){
+	override method energiaQueResta(){
 		return super() * 2
+	}
+	
+	override method energiaQueSuma(){
+		return 30
 	}
 	
 	override method esRadioactivo(){

@@ -13,49 +13,47 @@
  
 class Companiero{
 	var energia
-	var mochila=[]
+	var mochila = []
 	
-	constructor (_energia){
-		energia=_energia
+	constructor (nEnergia){
+		energia = nEnergia
 	}
 	
-	method puedeRecolectar(unMaterial) = unMaterial.puedeSerRecolectadoPor(self) 
+	method puedeRecolectar(oMaterial) = oMaterial.puedeSerRecolectadoPor(self) 
 
 	method energia() = energia
 	
-	method recolectar(unMaterial){
-		//La recolecta (si puede) y se la guarda en su mochila.
-		if (not self.puedeRecolectar(unMaterial)) self.error ("NO PUEDE RECOLECTAR ESTE MATERIAL")
-		self.guardar(unMaterial)
- 
-		/*Al recolectar materiales radiactivos, la energ�a de Morty disminuye en la cantidad 
-		requerida luego de la acci�n.*/
-//		if (unMaterial.esRadioactivo()) self.disminuirEnergia(unMaterial.energiaQueAfecta())  	
-		self.actualizarEnergia(unMaterial.energiaQueAfecta())
+	method guardar(oMaterial){
+		if (mochila.size()==3) self.quitar(mochila.first())
+		mochila.add(oMaterial)
+	}
+	
+	method recolectar(oMaterial){
+		if (not self.puedeRecolectar(oMaterial)) self.error ("NO PUEDE RECOLECTAR ESTE MATERIAL")
+		self.guardar(oMaterial)
+		self.restarEnergia(oMaterial.energiaQueResta())
+		self.sumarEnergia(oMaterial.energiaQueSuma())
 	} 
 	
 	
 	method darObjetosA(unCompanero){
-		// Saca todas las cosas de su mochila y se las pasa a un compa�ero
-		mochila.forEach({material=>
-									unCompanero.guardar(material)
+		mochila.forEach({material => unCompanero.guardar(material)
 									self.quitar(material)
 		})
 	}
 	
 	
-	// otros metodos
 	method quitar(unMaterial){
-		mochila.remove(unMaterial) //verificar si quita todo los materiales iguales o solo ese material
-	}
-	method guardar(unMaterial){
-		//se presupone que al agregar un 4to elemento se elimina el primero levantado
-		if (mochila.size()==3) self.quitar(mochila.first())
-		mochila.add(unMaterial)
+		mochila.remove(unMaterial)
 	}
 	
-	method actualizarEnergia(cantidad){
-		energia+=cantidad
+	
+	method sumarEnergia(cantidad){
+		energia += cantidad
+	}
+	
+	method restarEnergia(cantidad){
+		energia -= cantidad
 	}	
 }
 

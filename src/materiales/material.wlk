@@ -17,7 +17,9 @@ class Material{
 	
 	method puedeConducirElectricidad() = self.cuantaElectricidadConduce() > 0
 	
-	method puedeSerRecolectadoPor(unPersonaje) = unPersonaje.energia()>= self.energiaQueAfecta()
+	method puedeSerRecolectadoPor(unPersonaje) = unPersonaje.energia()>= self.energiaQueResta()
 	
-	method energiaQueAfecta() = self.cantMetal()
+	method energiaQueResta() = self.cantMetal()
+	
+	method energiaQueSuma() = 0
 }
