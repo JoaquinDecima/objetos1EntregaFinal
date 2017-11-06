@@ -24,7 +24,7 @@ class Companiero{
 	method energia() = energia
 	
 	method guardar(oMaterial){
-		if (mochila.size()==3) self.quitar(mochila.first())
+		if (mochila.size()==3) self.error ("No hay mas lugar en la mochila")
 		mochila.add(oMaterial)
 	}
 	

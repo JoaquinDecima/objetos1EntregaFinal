@@ -12,10 +12,11 @@ material, aunque algunos materiales tienen requerimientos especiales.
 * NOTA: Se delega el control del puedeRecolectar al elemento
 
 Ademas Morty no puede tener en su mochila mas de 3 materiales a la vez.
-* NOTA: se elimina el primero o no puedo recolectar?
+* NOTA: Segun Nicolas Passerini no deberia poder recoger un 4to elemento. Si llegara a ser necesario agregar algo habria que quitar y luego agregar. 
  
 Al recolectar materiales radiactivos, la energia de Morty disminuye en la cantidad requerida luego de la accion.
 * NOTA: La energia que disminuye es la cantidad de gramos del elemento a recolectar?
+   Consulte por este punto y dijo NP que en el enunciado no queda claro y que volvia con una respuesta.
 
 Los materiales que Morty puede encontrar son:
 	* Lata: 
