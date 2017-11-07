@@ -1,25 +1,24 @@
 class Material{
-	var cantMetal //propiedad
 	
-	constructor (nCantMetal){
-		cantMetal = nCantMetal
+	var cantidadDeMetal 	//gramos
+	
+	method esRadioactivo()
+	
+	method cuantaElectricidadConduce()
+	
+	method cuantaElectricidadGenera()
+	
+	method puedeSerRecolectadoPor(unPersonaje) = unPersonaje.energia() >= self.energiaQueResta()
+	
+	method energiaQueResta() = self.cantidadDeMetal()
+	
+	method cantidadDeMetal() = cantidadDeMetal
+	
+	method modificarEnergiaDe (unPersonaje) {
+		unPersonaje.energia(unPersonaje.energia()-self.energiaQueResta())
 	}
 	
-	method cantMetal() = cantMetal
-	
-	method esRadioactivo() = false
-	
-	method cuantaElectricidadGenera() = 0
-	
 	method puedeGenerarElectricidad() = self.cuantaElectricidadGenera() > 0
-	
-	method cuantaElectricidadConduce() = 0
-	
+		
 	method puedeConducirElectricidad() = self.cuantaElectricidadConduce() > 0
-	
-	method puedeSerRecolectadoPor(unPersonaje) = unPersonaje.energia()>= self.energiaQueResta()
-	
-	method energiaQueResta() = self.cantMetal()
-	
-	method energiaQueSuma() = 0
 }

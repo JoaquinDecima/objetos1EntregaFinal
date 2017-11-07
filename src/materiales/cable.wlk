@@ -1,16 +1,22 @@
-import lata.*
+import material.*
 
-
-class Cable inherits Lata{
+class Cable inherits Material{
+	
 	var longitud
 	var seccion
 	
-	constructor (nLongitud,nSeccion)=  super ((nLongitud / 1000) * nSeccion){
-		longitud = nLongitud
-		seccion = nSeccion
+	constructor (_cantidadDeMetal,_longitud,_seccion){
+		cantidadDeMetal = _cantidadDeMetal
+		longitud = _longitud
+		seccion = _seccion
 	}
 	
 	override method cuantaElectricidadConduce(){
 		return 3 * seccion
 	}
+	
+	override method cuantaElectricidadGenera() = 0
+	
+	override method esRadioactivo() = false	
+	
 }

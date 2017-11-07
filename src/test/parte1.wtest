@@ -1,0 +1,63 @@
+import companiero.*
+import materiales.material.*
+import materiales.fleeb.*
+import materiales.lata.*
+import materiales.materia_oscura.*
+import materiales.cable.*
+
+describe "Test parte 1" {
+
+	var lata = new Lata (30)
+	var cable = new Cable (30,10,2)
+	var fleeb = new Fleeb(14)
+	var otraLata = new Lata (10)
+	var materiaOscura = new MateriaOscura(cable)
+	var companieroPower = new Companiero(500)
+	var companieroDebil = new Companiero(1)
+	
+	fixture{
+		fleeb.comerMaterial(otraLata)
+	}
+	
+	test "Morty puede recolectar una lata" {
+		assert.that(morty.puedeRecolectar(lata))
+	}
+	
+	test "Morty recolecta un cable"{
+		morty.recolectar(cable)
+		assert.equals(1,morty.mochila().size())
+		assert.equals(70,morty.energia())
+	}
+	
+	
+	test "Morty recolecta a fleeb"{
+		morty.recolectar(fleeb)
+		assert.equals(1,morty.mochila().size())
+		assert.equals(90,morty.energia())
+	}
+	
+	
+	test "El compañero power tiene la mochila llena"{
+		companieroPower.recolectar(lata)
+		companieroPower.recolectar(cable)
+		companieroPower.recolectar(otraLata)
+		assert.throwsExceptionWithMessage("No hay mas lugar en la mochila",{companieroPower.recolectar(materiaOscura)})
+	}
+	
+	
+	test "el compañero debil no tiene suficiente energia"{
+		assert.throwsExceptionWithMessage("No tiene suficiente energia",{companieroDebil.recolectar(fleeb)})	
+	}
+	
+	
+	test "morty le pasa sus materiales al compañero power"{
+		morty.recolectar(lata)
+		morty.recolectar(cable)
+		morty.darObjetosA(companieroPower)
+		assert.equals(2,companieroPower.mochila().size())
+		assert.that(companieroPower.mochila().contains(lata))
+		assert.that(companieroPower.mochila().contains(cable))
+	}
+	
+	
+}

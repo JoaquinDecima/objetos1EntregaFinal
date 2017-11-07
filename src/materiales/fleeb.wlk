@@ -1,37 +1,37 @@
-import lata.Lata
-class Fleeb inherits Lata{
+import material.*
+
+class Fleeb inherits Material{
+	
 	var edad
-	var comio = {}
+	var materialesQueComio = #{}
 	
-	constructor (nEdad)=super(0){
-		edad = nEdad
-	}
-	
-	method comerMaterial(oMaterial){
-		comio.add(oMaterial)
-	}
-	
-	override method energiaQueResta(){
-		return super() * 2
-	}
-	
-	override method energiaQueSuma(){
-		return 30
+	constructor (_edad){
+		edad = _edad
 	}
 	
 	override method esRadioactivo(){
 		return edad >= 15
 	}
 	
-	override method cantMetal(){
-		return comio.sum({material => material.cantMetal()})
+	override method cuantaElectricidadConduce(){
+		return materialesQueComio.min({material => material.cuantaElectricidadConduce()})
 	}
 	
 	override method cuantaElectricidadGenera(){
-		return comio.max({material => material.cuantaElectricidadGenera()})
+		return materialesQueComio.max({material => material.cuantaElectricidadGenera()})
 	}
 	
-	override method cuantaElectricidadConduce(){
-		return comio.min({material => material.cuantaElectricidadConduce()})
+	override method cantidadDeMetal(){
+		return materialesQueComio.sum({material => material.cantidadDeMetal()})
+	
+	}
+	
+	override method energiaQueResta(){
+		if(!self.esRadioactivo()){ return (super() * 2) - 10}
+		return (super() * 2) 
+	}
+	
+	method comerMaterial(unMaterial){
+		materialesQueComio.add(unMaterial)
 	}
 }

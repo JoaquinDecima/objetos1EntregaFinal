@@ -5,24 +5,25 @@ import materiales.lata.*
 import materiales.materia_oscura.*
 import materiales.cable.*
 
-test "Morty puede recolectar"{
+
+
+test "Morty puede recolectar una lata"{
 	morty
-	var material = new Material (30,10,false,40)
-	assert.that(morty.puedeRecolectar(material))
+	var lata = new Lata (30)
+	assert.that(morty.puedeRecolectar(lata))
 }
 
-test "Morty recolecta"{
+test "Morty recolecta un cable"{
 	morty
-	var material = new Material (30,10,false,40)
-	assert.that(morty.puedeRecolectar(material))
+	var cable = new Cable (30,10,2)
+	assert.that(morty.puedeRecolectar(cable))
 	// Como validar que no arroja una excepcion? => Validamos lo que agregamos a la mochila de rick 
 	//assert.throwsExceptionWithMessage("NO PUEDE RECOLECTAR ESTE MATERIAL", {morty.recolectar(material)})
-	
-	 
 }
+
 test "Morty No puede recolectar"{
 	var mortySinEnergia = new Companiero(1)
-	var material = new Material (30,10,false,40)
+	var ca = new Material (30,10,false,40)
 	assert.throwsExceptionWithMessage("NO PUEDE RECOLECTAR ESTE MATERIAL",{mortySinEnergia.recolectar(material)})
 }
 

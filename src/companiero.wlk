@@ -15,46 +15,55 @@ class Companiero{
 	var energia
 	var mochila = []
 	
-	constructor (nEnergia){
-		energia = nEnergia
+	constructor (_energia){
+		energia = _energia
 	}
 	
-	method puedeRecolectar(oMaterial) = oMaterial.puedeSerRecolectadoPor(self) 
+	method puedeRecolectar(unMaterial) = unMaterial.puedeSerRecolectadoPor(self) 
 
 	method energia() = energia
 	
-	method guardar(oMaterial){
-		if (mochila.size()==3) self.error ("No hay mas lugar en la mochila")
-		mochila.add(oMaterial)
+	method energia(unaCantidadDeEnergia){
+		energia = unaCantidadDeEnergia
 	}
 	
-	method recolectar(oMaterial){
-		if (not self.puedeRecolectar(oMaterial)) self.error ("NO PUEDE RECOLECTAR ESTE MATERIAL")
-		self.guardar(oMaterial)
-		self.restarEnergia(oMaterial.energiaQueResta())
-		self.sumarEnergia(oMaterial.energiaQueSuma())
+	method mochila () = mochila
+	
+	method guardar(unMaterial){
+		if (mochila.size()==3) self.error ("No hay mas lugar en la mochila")
+		mochila.add(unMaterial)
+	}
+	
+	method recolectar(unMaterial){
+		if (not self.puedeRecolectar(unMaterial)) self.error ("No tiene suficiente energia")
+		self.guardar(unMaterial)
+		unMaterial.modificarEnergiaDe(self)
+		//self.restarEnergia(unMaterial.energiaQueResta())
+		//self.sumarEnergia(unMaterial.energiaQueSuma())
 	} 
 	
-	
-	method darObjetosA(unCompanero){
-		mochila.forEach({material => unCompanero.guardar(material)
+	method darObjetosA(unCompaniero){
+		mochila.forEach({material => unCompaniero.guardar(material)
 									self.quitar(material)
 		})
 	}
-	
 	
 	method quitar(unMaterial){
 		mochila.remove(unMaterial)
 	}
 	
 	
+/* 	
 	method sumarEnergia(cantidad){
 		energia += cantidad
 	}
 	
 	method restarEnergia(cantidad){
 		energia -= cantidad
-	}	
+	}
+	
+*/
+	
 }
 
 object morty inherits Companiero(100){}
