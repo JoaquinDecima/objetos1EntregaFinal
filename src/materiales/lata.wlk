@@ -2,16 +2,16 @@ import material.*
 
 class Lata inherits Material{
 	
+	var cantidadDeMetal
+	
 	constructor (_cantidadDeMetal){
 		cantidadDeMetal = _cantidadDeMetal
 	}
 	
-	override method esRadioactivo() = false
-	
 	override method cuantaElectricidadConduce(){
 		return cantidadDeMetal * 0.1
 	}
-
-	override method cuantaElectricidadGenera() = 0
+	
+	override method cantidadDeMetal() = cantidadDeMetal
 	
 }

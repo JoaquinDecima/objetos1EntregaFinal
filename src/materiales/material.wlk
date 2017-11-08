@@ -1,18 +1,17 @@
 class Material{
 	
-	var cantidadDeMetal 	//gramos
 	
-	method esRadioactivo()
+	method esRadioactivo() = false
 	
-	method cuantaElectricidadConduce()
+	method cuantaElectricidadConduce() = 0
 	
-	method cuantaElectricidadGenera()
+	method cuantaElectricidadGenera() = 0
 	
 	method puedeSerRecolectadoPor(unPersonaje) = unPersonaje.energia() >= self.energiaQueResta()
 	
 	method energiaQueResta() = self.cantidadDeMetal()
 	
-	method cantidadDeMetal() = cantidadDeMetal
+	method cantidadDeMetal()
 	
 	method modificarEnergiaDe (unPersonaje) {
 		unPersonaje.energia(unPersonaje.energia()-self.energiaQueResta())

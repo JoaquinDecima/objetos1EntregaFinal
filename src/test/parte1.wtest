@@ -4,11 +4,12 @@ import materiales.fleeb.*
 import materiales.lata.*
 import materiales.materia_oscura.*
 import materiales.cable.*
+import rick.*
 
 describe "Test parte 1" {
 
 	var lata = new Lata (30)
-	var cable = new Cable (30,10,2)
+	var cable = new Cable (10,2)
 	var fleeb = new Fleeb(14)
 	var otraLata = new Lata (10)
 	var materiaOscura = new MateriaOscura(cable)
@@ -26,7 +27,7 @@ describe "Test parte 1" {
 	test "Morty recolecta un cable"{
 		morty.recolectar(cable)
 		assert.equals(1,morty.mochila().size())
-		assert.equals(70,morty.energia())
+		assert.equals(99.98,morty.energia())
 	}
 	
 	
@@ -50,14 +51,13 @@ describe "Test parte 1" {
 	}
 	
 	
-	test "morty le pasa sus materiales al compañero power"{
+	test "morty le pasa sus materiales a rick"{
 		morty.recolectar(lata)
 		morty.recolectar(cable)
-		morty.darObjetosA(companieroPower)
-		assert.equals(2,companieroPower.mochila().size())
-		assert.that(companieroPower.mochila().contains(lata))
-		assert.that(companieroPower.mochila().contains(cable))
+		morty.darObjetosA(rick)
+		assert.equals(2,rick.mochila().size())
+		assert.that(rick.mochila().contains(lata))
+		assert.that(rick.mochila().contains(cable))
+		assert.that(rick.mochila().isEmpty())
 	}
-	
-	
 }

@@ -27,8 +27,12 @@ class Fleeb inherits Material{
 	}
 	
 	override method energiaQueResta(){
-		if(!self.esRadioactivo()){ return (super() * 2) - 10}
-		return (super() * 2) 
+		return (super() * 2) - self.energiaQueSuma()
+	}
+	
+	method energiaQueSuma() {
+		if(!self.esRadioactivo()){return 10}
+		return 0
 	}
 	
 	method comerMaterial(unMaterial){

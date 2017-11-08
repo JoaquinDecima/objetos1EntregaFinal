@@ -5,8 +5,7 @@ class Cable inherits Material{
 	var longitud
 	var seccion
 	
-	constructor (_cantidadDeMetal,_longitud,_seccion){
-		cantidadDeMetal = _cantidadDeMetal
+	constructor (_longitud,_seccion){
 		longitud = _longitud
 		seccion = _seccion
 	}
@@ -15,8 +14,6 @@ class Cable inherits Material{
 		return 3 * seccion
 	}
 	
-	override method cuantaElectricidadGenera() = 0
-	
-	override method esRadioactivo() = false	
+	override method cantidadDeMetal() = longitud / 1000 * seccion
 	
 }

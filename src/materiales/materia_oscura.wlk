@@ -27,7 +27,5 @@ class MateriaOscura inherits Material{
  			return materialBase.cuantaElectricidadGenera() * 2
  		}	
  		return 0
- 	}
- 	
- 	override method esRadioactivo() = false 	
+ 	}	
 }

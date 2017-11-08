@@ -38,14 +38,14 @@ class Companiero{
 		if (not self.puedeRecolectar(unMaterial)) self.error ("No tiene suficiente energia")
 		self.guardar(unMaterial)
 		unMaterial.modificarEnergiaDe(self)
-		//self.restarEnergia(unMaterial.energiaQueResta())
-		//self.sumarEnergia(unMaterial.energiaQueSuma())
 	} 
 	
-	method darObjetosA(unCompaniero){
-		mochila.forEach({material => unCompaniero.guardar(material)
+	method darObjetosA(unRick){
+		/*mochila.forEach({material => unCompaniero.guardar(material)
 									self.quitar(material)
-		})
+		})*/
+		unRick.recibir(mochila)
+		self.mochila().clean()
 	}
 	
 	method quitar(unMaterial){
