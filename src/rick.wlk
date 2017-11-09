@@ -1,3 +1,6 @@
+import experimentos.bateria.*
+import experimentos.circuito.*
+import experimentos.shock.*
 object rick {
 
 	
@@ -11,15 +14,19 @@ object rick {
 	method mochila() = mochila
 	
 	method recibir(unosMateriales){
-		
-		
+		mochila+=unosMateriales
 	}
 	
 	method experimentosQuePuedeRealizar(){
-		
+		return self.experimentosQueSabeHacer().filter({e=>e.cumpleRequisitos(mochila)})
 	}
+
+	method experimentosQueSabeHacer() = #{circuito,bateria,shock}
 	
 	method realizar(unExperimento){
+		//EN DESAROLLO
+		unExperimento.realizar(self)
+		
 		
 	}
 	

@@ -1,5 +1,16 @@
 class Material{
 	
+	var electricidadQueConduce
+	var esRadiactivo
+	var cantMetal
+	var electricidadQueGenera
+	
+	constructor (_electricidadQueConduce,_esRadiactivo,_cantMetal,_electricidadQueGenera){
+		electricidadQueConduce=_electricidadQueConduce
+		esRadiactivo=_esRadiactivo
+		cantMetal=_cantMetal
+		electricidadQueGenera=_electricidadQueGenera	
+	}
 	
 	method esRadioactivo() = false
 	
@@ -11,7 +22,7 @@ class Material{
 	
 	method energiaQueResta() = self.cantidadDeMetal()
 	
-	method cantidadDeMetal()
+	method cantidadDeMetal()= self.cantidadDeMetal() //Revisemos si es correcto
 	
 	method modificarEnergiaDe (unPersonaje) {
 		unPersonaje.energia(unPersonaje.energia()-self.energiaQueResta())
