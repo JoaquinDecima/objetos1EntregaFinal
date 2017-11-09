@@ -1,5 +1,5 @@
 // EN DESARROLLO
-object bateria {
+object bateria inherits Experimento{
 /*	Construir una Batería: 
 			* 	Se necesita:
 					* un material que tenga más de 200 gramos de metal

@@ -16,15 +16,15 @@ object circuito inherits Experimento{
 	}
 	
 	method cumpleRequisitos(mochila){
-		return mochila.contains(self.materialesQueRequiere(mochila)) and not self.materialesQueRequiere(mochila).isEmpty()
+		return self.materialesQueRequiere(mochila).size()>0
 	}
 	
 	method realizar(unCompaniero){
 		var electricidadQueConduce=3*unCompaniero.mochila().sum({unElemento=>unElemento.cuantaElectricidadConduce()})
-		var esRadiactivo=unCompaniero.mochila().any({unElemento=>unElemento.esRadiactivo()})
-		var cantMetal = unCompaniero.mochila().sum({unElemento=>unElemento.cantMetal()})
+		var esRadiactivo=unCompaniero.mochila().any({unElemento=>unElemento.esRadioactivo()})
+		var cantMetal = unCompaniero.mochila().sum({unElemento=>unElemento.cantidadDeMetal()})
 		var electricidadQueGenera=0 //se puede quitar pero lo deje para dar claridad 
-		unCompaniero.guardar(new Material (electricidadQueConduce,esRadiactivo,cantMetal,electricidadQueGenera))
+		unCompaniero.guardarUno(new Material (electricidadQueConduce,esRadiactivo,cantMetal,electricidadQueGenera))
 	}	
 	
 

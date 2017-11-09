@@ -4,7 +4,7 @@ class Lata inherits Material{
 	
 	var cantidadDeMetal
 	
-	constructor (_cantidadDeMetal){
+	constructor (_cantidadDeMetal) =super (0,0,0,0){
 		cantidadDeMetal = _cantidadDeMetal
 	}
 	

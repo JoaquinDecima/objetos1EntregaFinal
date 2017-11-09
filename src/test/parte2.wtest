@@ -1,0 +1,99 @@
+import experimentos.circuito.*
+import experimentos.bateria.*
+import experimentos.shock.*
+import rick.*
+import materiales.lata.*
+import materiales.cable.*
+
+
+	//	circuito
+test "Mochila NO cumple requisitos de Circuito" {
+	var mochila = [new Lata(10)] 
+	assert.notThat(circuito.cumpleRequisitos(mochila))
+
+}
+test "Mochila SI cumple requisitos de Circuito" {
+	//Cable con 2 de seccion conduce 6 (3*seccion)
+	var mochila = [new Lata(10),new Cable(10,2)] 
+	assert.that(circuito.cumpleRequisitos(mochila))
+}
+
+test "Circuito: materialesQueRequiere NO devuelve materiales"{
+	var mochila = [new Lata(10),new Lata(5)] 
+	assert.equals([],circuito.materialesQueRequiere(mochila))
+}
+
+test "Circuito: materialesQueRequiere SI devuelve materiales"{
+	var unCable=new Cable(10,2)
+	var otroCable = new Cable(10,3)
+	var mochila = [new Lata(10),unCable,otroCable] 
+	assert.equals([unCable,otroCable],circuito.materialesQueRequiere(mochila))
+}
+
+test "Rick: Experimentos que SABE hacer"{
+	assert.equals(#{circuito},rick.experimentosQueSabeHacer())
+}
+
+test "Rick: Experimentos que PUEDE hacer OK"{
+	var unCable=new Cable(10,2)
+	var mochila = [new Lata(10),unCable] 
+	rick.recibir(mochila)
+	assert.notThat(circuito.materialesQueRequiere(mochila).isEmpty())
+	assert.equals([unCable],circuito.materialesQueRequiere(mochila))
+
+
+	assert.equals(#{circuito},rick.experimentosQuePuedeRealizar())
+	
+
+	
+	
+}
+test "Rick: Experimentos que PUEDE hacer NINGUNO"{
+	var mochila = [] 
+	rick.recibir(mochila)
+	assert.equals(#{},rick.experimentosQuePuedeRealizar())
+	
+}
+
+
+test "Rick: Realizar experimento circuito"{
+	var unCable=new Cable(10,2)
+	var mochila = [new Lata(10),unCable] 
+	rick.recibir(mochila)
+	assert.equals(2,rick.mochila().size())
+	rick.realizar(circuito)
+	assert.equals(3,rick.mochila().size())
+
+	
+}
+
+
+	
+/*	method materialesQueRequiere(mochila){
+		
+	}
+		
+	method cumpleRequisitos(mochila){
+	
+	method realizar(unCompaniero){
+		
+		
+		}
+	}
+		
+	// rick	
+		method mochila() = mochila
+	
+	method recibir(unosMateriales){
+		mochila+=unosMateriales
+	}
+	
+	method experimentosQuePuedeRealizar(){
+		return self.experimentosQueSabeHacer().filter({e=>e.cumpleRequisitos(mochila)})
+	}
+
+	method experimentosQueSabeHacer() = #{circuito,bateria,shock}
+	
+	method realizar(unExperimento){
+		}
+*/
