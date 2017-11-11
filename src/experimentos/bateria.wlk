@@ -1,5 +1,6 @@
 import experimentos.experimento.*
-// EN DESARROLLO
+
+
 object bateria inherits Experimento{
 /*	Construir una Bater�a: 
 			* 	Se necesita:
@@ -12,5 +13,24 @@ object bateria inherits Experimento{
 			*   Siempre es radiactiva
 			*   al construirse el compa�ero de rick pierde 5 puntos de energ�a.
  */
+ 
+ 
+ 	override method materialesQueRequiere(mochila) = mochila.filter({unMaterial=>unMaterial.cantidadDeMetal()>200 or 
+ 															unMaterial.esRadiactivo()})
+	
+	override method cumpleRequisitos(mochila){
+		return self.materialesQueRequiere(mochila).size()>0
+	}
+	
+	override method realizar(unRick){
+		super(unRick)
+		unRick.companiero().energia(unRick.companiero().energia()-self.energiaQueResta())
+	}
+	
+	method energiaQueResta()=5
+	
+	override method cuantaElectricidadGenera() = 2 * self.cantidadDeMetal()
+	
+	override method esRadioactivo() = true
  	
 }

@@ -11,21 +11,17 @@ object circuito inherits Experimento{
 			* y no genera electricidad.
 			*/
 	
-	method materialesQueRequiere(mochila){
+	override method materialesQueRequiere(mochila){
 		return mochila.filter({unMaterial=>unMaterial.cuantaElectricidadConduce()>=5})
 	}
 	
+	/*
 	override method cumpleRequisitos(mochila){
 		return super(mochila) && self.materialesQueRequiere(mochila).size()>0
 	}
+	*/	
 	
-	method realizar(unCompaniero){
-		var material = new Material()
-		material.electricidadQueConduce(3*unCompaniero.mochila().sum({unElemento=>unElemento.cuantaElectricidadConduce()}))
-		material.esRadioactivo(unCompaniero.mochila().any({unElemento=>unElemento.esRadioactivo()}))
-		material.cantMetal(unCompaniero.mochila().sum({unElemento=>unElemento.cantidadDeMetal()}))
-		unCompaniero.guardarUno(material)
-	}	
+	override method esRadioactivo() = componentes.any({unElemento=>unElemento.esRadioactivo()}) 
 	
-
+	override method cuantaElectricidadConduce() = 3 * componentes.sum({unElemento=>unElemento.cuantaElectricidadConduce()})
 }

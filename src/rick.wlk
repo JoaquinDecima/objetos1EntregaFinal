@@ -2,6 +2,7 @@ import experimentos.bateria.*
 import experimentos.circuito.*
 import experimentos.shock.*
 import materiales.lata.*
+
 object rick {
 
 	
@@ -23,13 +24,14 @@ object rick {
 		return self.experimentosQueSabeHacer().filter({e=>e.cumpleRequisitos(mochila)})
 	}
 
-	method experimentosQueSabeHacer() = #{circuito}
+	method experimentosQueSabeHacer() = #{circuito,bateria,shock}
+	
+	method puedeRealizarExperimento(unExperimento) = self.experimentosQuePuedeRealizar().contains(unExperimento) 
 	
 	method realizar(unExperimento){
 		//EN DESAROLLO
-		unExperimento.realizar(self)
-		
-		
+		if (!self.puedeRealizarExperimento(unExperimento)) {self.error("No se puede realizar el experimento")}
+			unExperimento.realizar(self)
 	}
 	
 	
@@ -37,6 +39,8 @@ object rick {
 		mochila.add( unMaterial)
 	}
 	
-	
+	method companiero(unCompaniero){
+		companiero=unCompaniero
+	}
 
 }

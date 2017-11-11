@@ -8,7 +8,7 @@ object shock inherits Experimento{
 				generador electrico * la capacidad conductiva del conductor.
 	 */
 
-	method materialesQueRequiere(mochila){
+	override method materialesQueRequiere(mochila){
 		if (mochila.filter({unMaterial=>unMaterial.cuantaElectricidadConduce()>=1}).size() == 0){
 			self.error ("No tiene Conductor")
 		}
@@ -16,7 +16,18 @@ object shock inherits Experimento{
 			self.error ("No tiene Generador")
 		}
 		
-		return mochila.find({unMaterial=>unMaterial.cuantaElectricidadConduce()>=1}).add(mochila.find({unMaterial=>unMaterial.cuantaElectricidadGenera()>=1}))
+		return mochila.find({unMaterial=>unMaterial.cuantaElectricidadConduce()>=1})
+					  .add(mochila.find({unMaterial=>unMaterial.cuantaElectricidadGenera()>=1}))
 	}
-
+	
+	override method realizar(unRick){
+		unRick.companiero().energia(unRick.companiero().energia()-self.energiaQueSuma())
+	}
+	
+	method energiaQueSuma(){
+		//terminar
+		/*Se incrementa la energía en tantos puntos como la capacidad del
+		generador eléctrico * la capacidad conductiva del conductor */
+		return componentes.sum({material=>})
+	}
 }
