@@ -1,22 +1,23 @@
 class Material{
 	
-	var electricidadQueConduce
-	var esRadiactivo
-	var cantMetal
-	var electricidadQueGenera
+	var electricidadQueConduce = 0
+	var esRadiactivo = false
+	var cantMetal = 0
+	var electricidadQueGenera = 0
 	
-	constructor (_electricidadQueConduce,_esRadiactivo,_cantMetal,_electricidadQueGenera){
-		electricidadQueConduce=_electricidadQueConduce
-		esRadiactivo=_esRadiactivo
-		cantMetal=_cantMetal
-		electricidadQueGenera=_electricidadQueGenera	
-	}
+	method electricidadQueConduce(nElec){ electricidadQueConduce =nElec}
 	
-	method esRadioactivo() = false
+	method esRadioactivo(bRadioactivo){esRadiactivo = bRadioactivo} 
 	
-	method cuantaElectricidadConduce() = 0
+	method cantMetal(nCantMetal){cantMetal = nCantMetal}
 	
-	method cuantaElectricidadGenera() = 0
+	method electricidadQueGenera(nElectricidadQueGenera ){electricidadQueGenera = nElectricidadQueGenera }
+	
+	method esRadioactivo() = esRadiactivo
+	
+	method cuantaElectricidadConduce() = electricidadQueConduce
+	
+	method cuantaElectricidadGenera() = electricidadQueGenera
 	
 	method puedeSerRecolectadoPor(unPersonaje) = unPersonaje.energia() >= self.energiaQueResta()
 	

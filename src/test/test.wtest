@@ -15,22 +15,22 @@ test "Morty puede recolectar una lata"{
 
 test "Morty recolecta un cable"{
 	morty
-	var cable = new Cable (30,10,2)
+	var cable = new Cable (30,10)
 	assert.that(morty.puedeRecolectar(cable))
 	// Como validar que no arroja una excepcion? => Validamos lo que agregamos a la mochila de rick 
 	//assert.throwsExceptionWithMessage("NO PUEDE RECOLECTAR ESTE MATERIAL", {morty.recolectar(material)})
 }
 
 test "Morty No puede recolectar"{
-	var mortySinEnergia = new Companiero(1)
-	var ca = new Material (30,10,false,40)
-	assert.throwsExceptionWithMessage("NO PUEDE RECOLECTAR ESTE MATERIAL",{mortySinEnergia.recolectar(material)})
+	var mortySinEnergia = new Companiero(0)
+	var ca = new Material ()
+	assert.throwsExceptionWithMessage("NO PUEDE RECOLECTAR ESTE MATERIAL",{mortySinEnergia.recolectar(ca)})
 }
 
 test "Morty le pasa su mochila a Roberto"{
 	var roberto = new Companiero (10)
-	var materialA = new Material (30,10,false,40)
-	var materialB = new Material (10,20,true,10)
+	var materialA = new Material ()
+	var materialB = new Material ()
 	assert.that(morty.puedeRecolectar(materialA))
 	assert.that(morty.puedeRecolectar(materialB))
 	morty.recolectar(materialA)
