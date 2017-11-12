@@ -28,6 +28,6 @@ object shock inherits Experimento{
 		//terminar
 		/*Se incrementa la energía en tantos puntos como la capacidad del
 		generador eléctrico * la capacidad conductiva del conductor */
-		return componentes.sum({material=>})
+		return componentes.find({unMaterial=>unMaterial.cuantaElectricidadConduce()>=1}).cuantaElectricidadConduce() * componentes.find({unMaterial=>unMaterial.cuantaElectricidadGenera()>=1}).cuantaElectricidadGenera()
 	}
 }
