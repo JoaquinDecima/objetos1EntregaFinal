@@ -58,6 +58,6 @@ describe "Test parte 1" {
 		assert.equals(2,rick.mochila().size())
 		assert.that(rick.mochila().contains(lata))
 		assert.that(rick.mochila().contains(cable))
-		assert.that(rick.mochila().isEmpty())
+		assert.that(morty.mochila().isEmpty())
 	}
 }

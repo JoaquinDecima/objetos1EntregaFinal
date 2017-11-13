@@ -25,9 +25,10 @@ class Experimento {
  */	
 	
 	method realizar(unRick){
-		unRick.quitarDeLaMochila(self.materialesQueRequiere(unRick.mochila()))
-		self.componentes(self.materialesQueRequiere(unRick.mochila()).asSet())
-		unRick.guardarUno(self)
+		var materialesComponentes = self.materialesQueRequiere(unRick.mochila())
+		unRick.quitarDeLaMochila(materialesComponentes)
+		self.componentes(materialesComponentes)
+		unRick.guardarEnMochila(self)
 	}
 
 	

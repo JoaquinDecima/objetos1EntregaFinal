@@ -1,7 +1,5 @@
 import experimentos.experimento.*
 
-
-object bateria inherits Experimento{
 /*	Construir una Bater�a: 
 			* 	Se necesita:
 					* un material que tenga m�s de 200 gramos de metal
@@ -13,10 +11,10 @@ object bateria inherits Experimento{
 			*   Siempre es radiactiva
 			*   al construirse el compa�ero de rick pierde 5 puntos de energ�a.
  */
- 
- 
+object bateria inherits Experimento{
+	 
  	override method materialesQueRequiere(mochila) = mochila.filter({unMaterial=>unMaterial.cantidadDeMetal()>200 or 
- 															unMaterial.esRadiactivo()})
+ 															unMaterial.esRadioactivo()})
 	
 	override method cumpleRequisitos(mochila){
 		return self.materialesQueRequiere(mochila).size()>0

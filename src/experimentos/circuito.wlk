@@ -1,8 +1,7 @@
 import materiales.material.*
 import experimentos.experimento.*
 
-object circuito inherits Experimento{
-			/*Construir un Circuito: Requiere de al menos un material que conduzcan como m�nimo 5 amperes.
+/*Construir un Circuito: Requiere de al menos un material que conduzcan como m�nimo 5 amperes.
 			*  El circuito es construido con todos los materiales que Rick tiene en la mochila 
      			que conducen al menos 5 amperes. 
 			* El circuito conduce el triple que la suma de lo que conducen sus componentes
@@ -10,7 +9,9 @@ object circuito inherits Experimento{
 			* El metal es la suma del metal de sus componentes
 			* y no genera electricidad.
 			*/
-	
+			
+object circuito inherits Experimento{
+				
 	override method materialesQueRequiere(mochila){
 		return mochila.filter({unMaterial=>unMaterial.cuantaElectricidadConduce()>=5})
 	}
