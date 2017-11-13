@@ -43,9 +43,6 @@ class Companiero{
 	} 
 	
 	method darObjetosA(unRick){
-		/*mochila.forEach({material => unCompaniero.guardar(material)
-									self.quitar(material)
-		})*/
 		unRick.recibir(mochila)
 		self.vaciarMochila()
 	}
@@ -57,18 +54,6 @@ class Companiero{
 	method quitar(unMaterial){
 		mochila.remove(unMaterial)
 	}
-	
-	
-/* 	
-	method sumarEnergia(cantidad){
-		energia += cantidad
-	}
-	
-	method restarEnergia(cantidad){
-		energia -= cantidad
-	}
-	
-*/
 }
 
 object morty inherits Companiero(100){}

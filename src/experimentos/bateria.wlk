@@ -15,17 +15,13 @@ object bateria inherits Experimento{
 	 
  	override method materialesQueRequiere(mochila) = mochila.filter({unMaterial=>unMaterial.cantidadDeMetal()>200 or 
  															unMaterial.esRadioactivo()})
-	
-	override method cumpleRequisitos(mochila){
-		return self.materialesQueRequiere(mochila).size()>0
-	}
-	
+
 	override method realizar(unRick){
 		super(unRick)
 		unRick.companiero().energia(unRick.companiero().energia()-self.energiaQueResta())
 	}
 	
-	method energiaQueResta()=5
+	override method energiaQueResta() = 5
 	
 	override method cuantaElectricidadGenera() = 2 * self.cantidadDeMetal()
 	

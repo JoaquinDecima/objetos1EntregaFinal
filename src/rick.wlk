@@ -2,6 +2,7 @@ import experimentos.bateria.*
 import experimentos.circuito.*
 import experimentos.shock.*
 import materiales.lata.*
+import companiero.*
 
 /*	* Rick realiza experimentos
 	* Aquellos objetos necesarios que tiene en su mochila (aquellos que le dio su
@@ -11,7 +12,7 @@ import materiales.lata.*
 object rick {
 	
 	var mochila =[]
-	var companiero //un compañero conocido
+	var companiero = morty //un compañero conocido
 	
 	method mochila() = mochila
 	
@@ -29,7 +30,7 @@ object rick {
 	method puedeRealizarExperimento(unExperimento) = self.experimentosQuePuedeRealizar().contains(unExperimento) 
 	
 	method realizar(unExperimento){
-		if (!self.puedeRealizarExperimento(unExperimento)) {self.error("No se puede realizar el experimento")}
+		//if (!self.puedeRealizarExperimento(unExperimento)) {self.error("No se puede realizar el experimento")}
 			unExperimento.realizar(self)
 	}
 	
@@ -40,6 +41,8 @@ object rick {
 	method companiero(unCompaniero){
 		companiero=unCompaniero
 	}
+	
+	method companiero() = companiero
 	
 	method quitarDeLaMochila(elementos){
 		elementos.forEach({elem => self.quitarElementoDeMochila(elem)})
