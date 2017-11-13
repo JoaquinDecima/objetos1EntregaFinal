@@ -17,14 +17,13 @@ class Experimento inherits Material{
 	
 	method realizar(unRick){
 		var materialesComponentes = self.materialesQueRequiere(unRick.mochila())
+		if (materialesComponentes.isEmpty()) self.error ("No se puede realizar el experimento")
 		unRick.quitarDeLaMochila(materialesComponentes)
 		self.componentes(materialesComponentes)
-		unRick.guardarEnMochila(self)
+		
 	}
 
 	
-	//--------------------
-
 	override method cantidadDeMetal() = componentes.sum({material=>material.cantidadDeMetal()})
 	
 }

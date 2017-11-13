@@ -4,19 +4,14 @@ import experimentos.shock.*
 import materiales.lata.*
 import companiero.*
 
-/*	* Rick realiza experimentos
-	* Aquellos objetos necesarios que tiene en su mochila (aquellos que le dio su
-	  compa�ero, Morty en este caso), con esto transforma materiales en otros materiales
-	* algunos experimentos afectan a su compañero. */
 	
 object rick {
 	
 	var mochila =[]
-	var companiero = morty //un compañero conocido
+	var companiero = morty 
 	
 	method mochila() = mochila
 	
-	//recibe una lista de materiales
 	method recibir(unosMateriales){
 		mochila+=unosMateriales
 	}
@@ -30,7 +25,6 @@ object rick {
 	method puedeRealizarExperimento(unExperimento) = self.experimentosQuePuedeRealizar().contains(unExperimento) 
 	
 	method realizar(unExperimento){
-		//if (!self.puedeRealizarExperimento(unExperimento)) {self.error("No se puede realizar el experimento")}
 			unExperimento.realizar(self)
 	}
 	
