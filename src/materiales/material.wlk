@@ -12,6 +12,8 @@ class Material{
 	
 	method cuantaElectricidadGenera() = 0
 	
+	method esSerVivo() = false
+	
 	method puedeGenerarElectricidad() = self.cuantaElectricidadGenera() > 0
 		
 	method puedeConducirElectricidad() = self.cuantaElectricidadConduce() > 0

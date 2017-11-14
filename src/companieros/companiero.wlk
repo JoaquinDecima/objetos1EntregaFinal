@@ -14,6 +14,8 @@ class Companiero{
 		energia = _energia
 	}
 	
+	method cantMaxMochila() = 3
+	
 	method puedeRecolectar(unMaterial) = unMaterial.puedeSerRecolectadoPor(self) 
 
 	method energia() = energia
@@ -25,7 +27,7 @@ class Companiero{
 	method mochila () = mochila
 	
 	method guardar(unMaterial){
-		if (mochila.size()==3) self.error ("No hay mas lugar en la mochila")
+		if (mochila.size()==self.cantMaxMochila()) self.error ("No hay mas lugar en la mochila")
 		mochila.add(unMaterial)
 	}
 	

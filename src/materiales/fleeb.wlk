@@ -38,4 +38,6 @@ class Fleeb inherits Material{
 	method comerMaterial(unMaterial){
 		materialesQueComio.add(unMaterial)
 	}
+	
+	override method esSerVivo() = true
 }

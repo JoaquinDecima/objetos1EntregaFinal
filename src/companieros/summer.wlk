@@ -1,11 +1,8 @@
 import companieros.companiero.*
 
-class Summer inherits Companiero {
+object summer inherits Companiero(100) {
 
-	override method guardar(unMaterial){
-		if (mochila.size()==2) self.error ("No hay mas lugar en la mochila")
-		mochila.add(unMaterial)
-	}
+	override method cantMaxMochila() = 2
 	
 	override method darObjetosA(unRick){
 		super(unRick)
