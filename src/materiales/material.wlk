@@ -8,10 +8,6 @@ class Material{
 	
 	method cantidadDeMetal()= self.cantidadDeMetal() //Revisemos si es correcto
 	
-	method modificarEnergiaDe (unPersonaje) {
-		unPersonaje.energia(unPersonaje.energia()-self.energiaQueResta())
-	}
-	
 	method cuantaElectricidadConduce() = 0
 	
 	method cuantaElectricidadGenera() = 0

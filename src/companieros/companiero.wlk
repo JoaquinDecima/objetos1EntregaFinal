@@ -32,8 +32,12 @@ class Companiero{
 	method recolectar(unMaterial){
 		if (not self.puedeRecolectar(unMaterial)) self.error ("No tiene suficiente energia")
 		self.guardar(unMaterial)
-		unMaterial.modificarEnergiaDe(self)
+		self.consumirEnergia(unMaterial.energiaQueResta())
 	} 
+	
+	method consumirEnergia(nCantEnergia){
+		energia -= nCantEnergia
+	}
 	
 	method darObjetosA(unRick){
 		unRick.recibir(mochila)

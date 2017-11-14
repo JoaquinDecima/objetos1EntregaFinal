@@ -2,7 +2,7 @@ import experimentos.bateria.*
 import experimentos.circuito.*
 import experimentos.shock.*
 import materiales.lata.*
-import companiero.*
+import companieros.companiero.*
 
 	
 object rick {

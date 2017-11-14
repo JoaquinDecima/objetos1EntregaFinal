@@ -1,4 +1,4 @@
-import companiero.*
+import companieros.companiero.*
 import materiales.material.*
 import materiales.fleeb.*
 import materiales.lata.*

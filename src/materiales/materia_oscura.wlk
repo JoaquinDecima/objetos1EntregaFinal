@@ -7,6 +7,7 @@ class MateriaOscura inherits Material{
 
  	var materialBase
  	
+ 	
  	constructor (_materialBase){
  		materialBase = _materialBase
  		}
