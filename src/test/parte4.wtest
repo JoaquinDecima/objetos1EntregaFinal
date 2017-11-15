@@ -1,0 +1,21 @@
+import companieros.companiero.*
+import materiales.parasitosAlienigenas.*
+import acciones.acciones.*
+import materiales.lata.*
+import rick.*
+
+test "Parasito alienigena se agrego a la mochila" {
+		var pa=new ParasitoAlienigena([])
+		morty.recolectar(pa)
+		assert.that(morty.mochila().contains(pa))
+}
+
+test "PA cambio comportamiento" {
+		var unMaterial= new Lata (10)
+		var quique = new Companiero(50) // al elegir un compañero habria que crear metodo recibir
+		var pipo=rick
+		var pa=new ParasitoAlienigena([new EntregarTodo(pipo),new QuitarUnoAlAzar(),new ModificarEnergia(-50)])
+		assert.equals(100,morty.energia())
+		morty.recolectar(pa)
+		assert.equals(90,morty.energia())
+}
