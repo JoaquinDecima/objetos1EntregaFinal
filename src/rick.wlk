@@ -3,14 +3,22 @@ import experimentos.circuito.*
 import experimentos.shock.*
 import materiales.lata.*
 import companieros.companiero.*
+import materiales.estrategia.alAzar.*
+import materiales.estrategia.ecologico.*
+import materiales.estrategia.mejorGenerador.*
+import materiales.estrategia.menorCantidadMetal.*
 
-	
 object rick {
 	
 	var mochila =[]
 	var companiero = morty 
+	var estrategia = alAzar
 	
 	method mochila() = mochila
+	
+	method cambiarEstrategia(unaEstrategia){
+		estrategia=unaEstrategia
+	}
 	
 	method recibir(unosMateriales){
 		mochila+=unosMateriales
