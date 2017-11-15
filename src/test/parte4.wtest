@@ -13,9 +13,13 @@ test "Parasito alienigena se agrego a la mochila" {
 test "PA cambio comportamiento" {
 		var unMaterial= new Lata (10)
 		var quique = new Companiero(50) // al elegir un compañero habria que crear metodo recibir
-		var pipo=rick
-		var pa=new ParasitoAlienigena([new EntregarTodo(pipo),new QuitarUnoAlAzar(),new ModificarEnergia(-50)])
+		var accion1 = new RecolectarMaterialOculto(unMaterial)
+		var accion2 = new EntregarTodo(rick)
+		var accion3 = new RecolectarMaterialOculto(unMaterial)
+		var accion4 = new ModificarEnergia(10)
+		
+		var pa=new ParasitoAlienigena([accion1,accion2,accion3,accion4])
 		assert.equals(100,morty.energia())
 		morty.recolectar(pa)
-		assert.equals(90,morty.energia())
+		assert.equals(80,morty.energia())
 }
