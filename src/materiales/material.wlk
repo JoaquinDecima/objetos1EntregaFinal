@@ -17,4 +17,6 @@ class Material{
 	method puedeGenerarElectricidad() = self.cuantaElectricidadGenera() > 0
 		
 	method puedeConducirElectricidad() = self.cuantaElectricidadConduce() > 0
+	
+	method alterarPersonalidadDe(unPersonaje){} //para polimorfismo de materiales. Solo lo usa parasitoAlienigena
 }

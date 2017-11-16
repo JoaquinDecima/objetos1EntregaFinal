@@ -33,7 +33,8 @@ Un parásito alienígena es un elemento vivo que morty puede recolectar.
 			quiera jugar.
 
 Entre las distintas acciones con las que se puede configurar el parásito se encuentran:
-	* Que el recolector entregue todos sus elementos a su compañero
+	* Que el recolector entregue todos sus elementos a su compañero 
+	MORTY NO TIENE COMPAÑERO . LE AGREGAMOS UNO?
 	* Que el recolector descarte un elemento al azar de su mochila. 
 		Si la mochila está vacía no descarta nada.
 

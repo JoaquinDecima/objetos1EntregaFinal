@@ -1,4 +1,3 @@
-
  import rick.*
  import materiales.cable.*
  import materiales.fleeb.*
@@ -35,6 +34,7 @@ class Companiero{
 		if (not self.puedeRecolectar(unMaterial)) self.error ("No tiene suficiente energia")
 		self.guardar(unMaterial)
 		self.consumirEnergia(unMaterial.energiaQueResta())
+		unMaterial.alterarPersonalidadDe(self) // nuevo para uso de parasitos alienigenas..
 	} 
 	
 	method consumirEnergia(nCantEnergia){
