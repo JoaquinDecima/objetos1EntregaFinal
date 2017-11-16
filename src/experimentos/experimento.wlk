@@ -11,12 +11,13 @@ class Experimento inherits Material{
 	}		
 
 		
-	method materialesQueRequiere(mochila)
+	method materialesQueRequiere(mochila, unaEstrategia)
 	
-	method cumpleRequisitos(mochila) = self.materialesQueRequiere(mochila).size()>0
+	method cumpleRequisitos(mochila, unaEstrategia) = self.materialesQueRequiere(mochila,unaEstrategia).size()>0
 	
 	method realizar(unRick){
-		var materialesComponentes = self.materialesQueRequiere(unRick.mochila())
+		var materialesComponentes = self.materialesQueRequiere(unRick.mochila(),unRick.estrategia())
+		
 		if (materialesComponentes.isEmpty()) self.error ("No se puede realizar el experimento")
 		unRick.quitarDeLaMochila(materialesComponentes)
 		self.componentes(materialesComponentes)

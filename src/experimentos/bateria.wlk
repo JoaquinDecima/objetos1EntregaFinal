@@ -3,8 +3,11 @@ import experimentos.experimento.*
 
 object bateria inherits Experimento{
 	 
- 	override method materialesQueRequiere(mochila) = mochila.filter({unMaterial=>unMaterial.cantidadDeMetal()>200 or 
- 															unMaterial.esRadioactivo()})
+ 	override method materialesQueRequiere(mochila,estrategia){
+ 		return estrategia.seleccion().apply(
+ 			mochila.filter({unMaterial=>unMaterial.cantidadDeMetal()>200 or unMaterial.esRadioactivo()})
+ 			)
+ 	}																													
 
 	override method realizar(unRick){
 		super(unRick)

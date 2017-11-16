@@ -4,35 +4,38 @@ import experimentos.shock.*
 import rick.*
 import materiales.lata.*
 import materiales.cable.*
+import materiales.fleeb.*
 import materiales.materia_oscura.*
-
+import materiales.estrategia.alAzar.*
+import materiales.estrategia.menorCantidadMetal.*
+import materiales.estrategia.mejorGenerador.*
+import materiales.estrategia.ecologico.*
 
 	
 describe "Tests parte 2"{
-
-
+	
 		//	circuito
 	test "Circuito: Mochila NO cumpleRequisitos" {
 		var mochila = [new Lata(10)] 
-		assert.notThat(circuito.cumpleRequisitos(mochila))
+		assert.notThat(circuito.cumpleRequisitos(mochila,alAzar))
 	
 	}
 	test "Circuito: Mochila SI cumpleRequisitos" {
 		//Cable con 2 de seccion conduce 6 (3*seccion)
 		var mochila = [new Lata(10),new Cable(10,2)] 
-		assert.that(circuito.cumpleRequisitos(mochila))
+		assert.that(circuito.cumpleRequisitos(mochila,alAzar))
 	}
 	
 	test "Circuito: materialesQueRequiere NO devuelve materiales"{
 		var mochila = [new Lata(10),new Lata(5)] 
-		assert.equals([],circuito.materialesQueRequiere(mochila))
+		assert.equals([],circuito.materialesQueRequiere(mochila,alAzar))
 	}
 	
 	test "Circuito: materialesQueRequiere SI devuelve materiales"{
 		var unCable=new Cable(10,2)
 		var otroCable = new Cable(10,3)
 		var mochila = [new Lata(10),unCable,otroCable] 
-		assert.equals([unCable,otroCable],circuito.materialesQueRequiere(mochila))
+		assert.equals([unCable,otroCable],circuito.materialesQueRequiere(mochila,alAzar))
 	}
 	
 	
@@ -77,7 +80,7 @@ describe "Tests parte 2"{
 		var unCable = new Cable(10,2)
 		var mochila = [new Lata(10),unCable] 
 		rick.recibir(mochila)
-		assert.equals([unCable],circuito.materialesQueRequiere(mochila))
+		assert.equals([unCable],circuito.materialesQueRequiere(mochila,alAzar))
 			
 	}
 	test "Rick: Experimentos que PUEDE hacer NINGUNO"{
@@ -110,6 +113,34 @@ describe "Tests parte 2"{
 
 		assert.equals(2,rick.mochila().size())
 	}
+	
+//----------parte 3 ---------------	
+	
+	test "Bateria con estrategia menorCantidadMetal" {
+		var unaLata = new Lata(250)
+		var otraLata= new Lata(201)
+		var otraLataMas = new Lata(250)
+		var mochila = [unaLata,otraLata,otraLataMas] 
+		assert.equals([otraLata],bateria.materialesQueRequiere(mochila,menorCantidadMetal))
+	}
 
-
+	test "Bateria con estrategia mejorGenerador" {
+		var cable = new Cable(10,2)
+		var lata = new Lata(300)
+		var otraLata = new Lata(350)
+		rick.recibir([cable,lata,otraLata])
+		bateria.realizar(rick)
+		assert.equals([bateria],bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
+	}
+	
+	test "Bateria con estrategia ecologico"{
+		var cable = new Cable(10,7)
+		var lata = new Lata(300)
+		var unFleeb = new Fleeb(12)
+		unFleeb.comerMaterial(lata)
+		var otraLata = new Lata(350)
+		var otroCable = new Cable(5,4)
+		rick.recibir([cable,unFleeb,otraLata,otroCable])
+		assert.equals([unFleeb],bateria.materialesQueRequiere(rick.mochila(),ecologico))
+	}
 }

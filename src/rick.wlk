@@ -20,12 +20,14 @@ object rick {
 		estrategia=unaEstrategia
 	}
 	
+	method estrategia() = estrategia
+	
 	method recibir(unosMateriales){
 		mochila+=unosMateriales
 	}
 	
 	method experimentosQuePuedeRealizar(){
-		return self.experimentosQueSabeHacer().filter({e=>e.cumpleRequisitos(mochila)})
+		return self.experimentosQueSabeHacer().filter({e=>e.cumpleRequisitos(mochila,estrategia)})
 	}
 
 	method experimentosQueSabeHacer() = #{circuito,bateria,shock}

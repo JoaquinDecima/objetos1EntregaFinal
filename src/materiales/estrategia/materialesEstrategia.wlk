@@ -1,6 +1,6 @@
 
 class MaterialesEstrategia {
 
-
+	method seleccion()
 
 }
