@@ -1,8 +1,19 @@
 import companieros.companiero.*
 import materiales.parasitosAlienigenas.*
 import acciones.acciones.*
-import materiales.lata.*
 import rick.*
+import experimentos.circuito.*
+import experimentos.bateria.*
+import experimentos.shock.*
+import materiales.lata.*
+import materiales.cable.*
+import materiales.fleeb.*
+import materiales.materia_oscura.*
+import materiales.estrategia.alAzar.*
+import materiales.estrategia.menorCantidadMetal.*
+import materiales.estrategia.mejorGenerador.*
+import materiales.estrategia.ecologico.*
+
 
 test "Parasito alienigena se agrego a la mochila" {
 		var pa=new ParasitoAlienigena([])
@@ -81,4 +92,36 @@ test "Accion : REcolectar material oculto"{
 		morty.recolectar(pa)	
 		assert.equals([pa,lata],morty.mochila())
 }
- 
+
+//-------- Estrategias ------------
+
+
+test "Bateria con estrategia menorCantidadMetal" {
+		var unaLata = new Lata(250)
+		var otraLata= new Lata(201)
+		var otraLataMas = new Lata(250)
+		var mochila = [unaLata,otraLata,otraLataMas] 
+		assert.equals([otraLata],bateria.materialesQueRequiere(mochila,menorCantidadMetal))
+	}
+
+	test "Bateria con estrategia mejorGenerador" {
+		var cable = new Cable(10,2)
+		var lata = new Lata(300)
+		var otraLata = new Lata(350)
+		rick.recibir([cable,lata,otraLata])
+		bateria.realizar(rick)
+		assert.equals([bateria],bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
+	}
+	
+	test "Bateria con estrategia ecologico"{
+		var cable = new Cable(10,7)
+		var lata = new Lata(300)
+		var unFleeb = new Fleeb(12)
+		unFleeb.comerMaterial(lata)
+		var otraLata = new Lata(350)
+		var otroCable = new Cable(5,4)
+		rick.recibir([cable,unFleeb,otraLata,otroCable])
+		assert.equals([unFleeb],bateria.materialesQueRequiere(rick.mochila(),ecologico))
+	}
+
+ //----------------------------------
