@@ -6,15 +6,14 @@
  
 class Companiero{
 	var energia
-	var mochila = []
 	var companiero
+	var mochila = []
 	
-	
-	
-	constructor (_energia){ //lo utiliza parasitosAlienigenas
+	constructor (_energia){ 
 		energia = _energia
 	}
 	
+	//lo utiliza parasitosAlienigenas
 	method companiero(unCompaniero){ //Provisorio, luego habra que incluirlo dentro del constructor. No lo hice para q no rompa
 		companiero=unCompaniero
 	}	

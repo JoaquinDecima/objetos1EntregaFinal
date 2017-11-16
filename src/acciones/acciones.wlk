@@ -1,5 +1,4 @@
 class EntregarTodo {
-
 	method aplicar(unPersonaje){
 		unPersonaje.darTodoACompaniero() 
 	}
@@ -30,7 +29,6 @@ class RecolectarMaterialOculto {
 	
 	method aplicar(unPersonaje){
 		unPersonaje.recolectar(materialOculto)
-
 	}
 }
 
