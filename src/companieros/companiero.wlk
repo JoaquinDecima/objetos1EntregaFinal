@@ -7,11 +7,17 @@
 class Companiero{
 	var energia
 	var mochila = []
+	var companiero
 	
-	constructor (_energia){
+	
+	
+	constructor (_energia){ //lo utiliza parasitosAlienigenas
 		energia = _energia
 	}
 	
+	method companiero(unCompaniero){ //Provisorio, luego habra que incluirlo dentro del constructor. No lo hice para q no rompa
+		companiero=unCompaniero
+	}	
 	method cantMaxMochila() = 3
 	
 	method puedeRecolectar(unMaterial) = unMaterial.puedeSerRecolectadoPor(self) 
@@ -32,6 +38,8 @@ class Companiero{
 	method recolectar(unMaterial){
 		if (not self.puedeRecolectar(unMaterial)) self.error ("No tiene suficiente energia")
 		self.guardar(unMaterial)
+		
+		//unificar en unMaterial.serRecolectado
 		self.consumirEnergia(unMaterial.energiaQueResta())
 		unMaterial.alterarPersonalidadDe(self) // nuevo para uso de parasitos alienigenas..
 	} 
@@ -61,6 +69,10 @@ class Companiero{
 	
 	method modificarEnergia(valorAbsoluto){ //lo utiliza parasitosAlienigenas
 		energia+=valorAbsoluto
+	}
+	
+	method darTodoACompaniero(){ //lo utiliza parasitosAlienigenas
+		self.darObjetosA(companiero)
 	}
 }
 

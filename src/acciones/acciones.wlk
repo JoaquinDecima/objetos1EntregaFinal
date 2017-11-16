@@ -1,12 +1,7 @@
 class EntregarTodo {
-	var unCompaniero
-	
-	constructor (_unCompaniero){
-		unCompaniero=_unCompaniero
-	}
 
 	method aplicar(unPersonaje){
-		unPersonaje.darObjetosA(unCompaniero) //Se podria delegar en personaje
+		unPersonaje.darTodoACompaniero() 
 	}
 }
 
@@ -15,7 +10,7 @@ class QuitarUnoAlAzar {
 		unPersonaje.quitarUnoAlAzar()
 	}
 }
-class ModificarEnergia { //Modifica la energia del personaje
+class ModificarEnergia { 
 	const cantEnergia
 	
 	constructor (_cantEnergia){
@@ -34,7 +29,6 @@ class RecolectarMaterialOculto {
 	}
 	
 	method aplicar(unPersonaje){
-		//Depende si el recolector puede recolectar
 		unPersonaje.recolectar(materialOculto)
 
 	}

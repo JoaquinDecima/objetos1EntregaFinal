@@ -25,7 +25,7 @@ test "PA cambio comportamiento" {
 		var unMaterial= new Lata (10)
 		var quique = new Companiero(50) // al elegir un compañero habria que crear metodo recibir
 		var accion1 = new RecolectarMaterialOculto(unMaterial)
-		var accion2 = new EntregarTodo(rick)
+		var accion2 = new EntregarTodo()
 		var accion3 = new RecolectarMaterialOculto(unMaterial)
 		var accion4 = new ModificarEnergia(10)
 		
