@@ -5,7 +5,6 @@
  import materiales.materia_oscura.*
  
 class Companiero{
-	
 	var energia
 	var mochila = []
 	
@@ -52,6 +51,16 @@ class Companiero{
 	
 	method quitar(unMaterial){
 		mochila.remove(unMaterial)
+	}
+	
+	method quitarUnoAlAzar(){ //lo utiliza parasitosAlienigenas
+		if (not mochila.isEmpty()){
+			self.quitar(mochila.anyOne()) 
+		}
+	}
+	
+	method modificarEnergia(valorAbsoluto){ //lo utiliza parasitosAlienigenas
+		energia+=valorAbsoluto
 	}
 }
 

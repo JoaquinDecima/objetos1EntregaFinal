@@ -82,15 +82,14 @@ test "Accion : Modificar energia"{
 		assert.equals(85,morty.energia())
 }
 
-test "Accion : REcolectar material oculto"{
+test "Accion : Recolectar material oculto"{
 		var lata =new Lata(1)
 		
 		var accion = new RecolectarMaterialOculto([lata])
 		var pa=new ParasitoAlienigena([accion])
 		
 		assert.equals([],morty.mochila())
-		morty.recolectar(pa)	
-		assert.equals([pa,lata],morty.mochila())
+
 }
 
 //-------- Estrategias ------------

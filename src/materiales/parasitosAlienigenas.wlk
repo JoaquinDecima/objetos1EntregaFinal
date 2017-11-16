@@ -7,6 +7,7 @@ class ParasitoAlienigena inherits Material{
 	constructor (_acciones){
 		acciones=_acciones 	
 	}
+	
 	override method cantidadDeMetal()=10
 	
 	override method cuantaElectricidadGenera() = 5

@@ -9,12 +9,10 @@ class EntregarTodo {
 		unPersonaje.darObjetosA(unCompaniero) //Se podria delegar en personaje
 	}
 }
+
 class QuitarUnoAlAzar {
 	method aplicar(unPersonaje){
-		//Quitar uno al azar, si no hay nada no hace nada
-		if (not unPersonaje.mochila().isEmpty()){
-			unPersonaje.quitar(unPersonaje.mochila().anyOne()) //Se podria delegar en personaje un metodo quitarAlAzar
-		}
+		unPersonaje.quitarUnoAlAzar()
 	}
 }
 class ModificarEnergia { //Modifica la energia del personaje
@@ -25,8 +23,7 @@ class ModificarEnergia { //Modifica la energia del personaje
 	}
 	
 	method aplicar(unPersonaje){
-		unPersonaje.energia(unPersonaje.energia()+cantEnergia)
-		//Podria mejorar si aplicamos el metodo modificarEnergia(valorAbsoluto) en companiero
+		unPersonaje.modificarEnergia(cantEnergia)
 	}
 }
 class RecolectarMaterialOculto {
