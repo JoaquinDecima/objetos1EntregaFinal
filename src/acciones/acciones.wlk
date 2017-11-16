@@ -6,7 +6,7 @@ class EntregarTodo {
 	}
 
 	method aplicar(unPersonaje){
-		unPersonaje.darObjetosA(unCompaniero) //Se podria delegar en personaje un metodo ??
+		unPersonaje.darObjetosA(unCompaniero) //Se podria delegar en personaje
 	}
 }
 class QuitarUnoAlAzar {

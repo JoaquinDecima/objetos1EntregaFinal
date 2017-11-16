@@ -23,3 +23,62 @@ test "PA cambio comportamiento" {
 		morty.recolectar(pa)
 		assert.equals(80,morty.energia())
 }
+
+test "Accion Entregar Todo" {
+		var a= new Lata (10)
+		var b= new Lata (10)
+		
+		var pepe= new Companiero(50) // al elegir un compañero habria que crear metodo recibir
+		
+		var accion = new EntregarTodo(rick)
+		
+		var pa=new ParasitoAlienigena([accion])
+		
+		assert.that(rick.mochila().isEmpty())
+		
+		morty.recolectar(a)
+		morty.recolectar(b)
+		morty.recolectar(pa)
+
+		assert.equals([],morty.mochila())
+		assert.equals([a,b,pa],rick.mochila())
+}
+
+test "Accion Quitar Uno al azar" {
+		var a= new Lata (10)
+		var b= new Lata (10)
+		var pepe= new Companiero(50) // al elegir un compañero habria que crear metodo recibir
+		
+		var accion = new QuitarUnoAlAzar()
+		var pa=new ParasitoAlienigena([accion])
+		
+
+		morty.recolectar(a)
+		morty.recolectar(b)
+		morty.recolectar(pa)
+
+		assert.equals(2,morty.mochila().size())
+}
+
+test "Accion : Modificar energia"{
+		var pepe= new Companiero(50) // al elegir un compañero habria que crear metodo recibir
+		
+		var accion = new ModificarEnergia(-5)
+		var pa=new ParasitoAlienigena([accion])
+		
+		assert.equals(100,morty.energia())
+		morty.recolectar(pa)	//pierde 10 de energia al recolectar
+		assert.equals(85,morty.energia())
+}
+
+test "Accion : REcolectar material oculto"{
+		var lata =new Lata(1)
+		
+		var accion = new RecolectarMaterialOculto([lata])
+		var pa=new ParasitoAlienigena([accion])
+		
+		assert.equals([],morty.mochila())
+		morty.recolectar(pa)	
+		assert.equals([pa,lata],morty.mochila())
+}
+ 
