@@ -7,7 +7,7 @@ import materiales.cable.*
 import materiales.materia_oscura.*
 
 
-	
+// TODO Sería mejor buscar una mejor forma de organizar los tests en distintos describes.
 describe "Tests parte 2"{
 
 

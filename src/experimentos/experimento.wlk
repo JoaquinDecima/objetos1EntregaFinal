@@ -1,5 +1,7 @@
 import materiales.material.*
 
+// TODO Esta clase (y sus subclases) mezcla dos conceptos: los experimentos y sus resultados.
+// Eso hace que el experimento no se puede hacer más de una vez.
 class Experimento inherits Material{
 
 	var componentes = []
@@ -13,6 +15,8 @@ class Experimento inherits Material{
 		
 	method materialesQueRequiere(mochila)
 	
+	// TODO No parece estar bien esta lógica. Si yo pido materiales que requiere y no los puede
+	// obtener, debería tirar excepción, devolver una colección vacía es propenso a errores.
 	method cumpleRequisitos(mochila) = self.materialesQueRequiere(mochila).size()>0
 	
 	method realizar(unRick){

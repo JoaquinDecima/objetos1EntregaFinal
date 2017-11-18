@@ -16,6 +16,7 @@ class MateriaOscura inherits Material{
  	}
  	
  	override method cuantaElectricidadConduce(){
+ 		// TODO Este if no parece necesario.
  		if (materialBase.puedeConducirElectricidad()){
  			return materialBase.cuantaElectricidadConduce() / 2
  		}	
@@ -23,6 +24,7 @@ class MateriaOscura inherits Material{
  	}
  	
  	override method cuantaElectricidadGenera(){
+ 		// TODO Este if no parece necesario.
  		if (materialBase.puedeGenerarElectricidad()){
  			return materialBase.cuantaElectricidadGenera() * 2
  		}	

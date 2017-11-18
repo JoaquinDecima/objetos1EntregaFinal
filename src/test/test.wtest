@@ -8,15 +8,19 @@ import materiales.cable.*
 
 
 test "Morty puede recolectar una lata"{
+	// TODO ???
 	morty
 	var lata = new Lata (30)
 	assert.that(morty.puedeRecolectar(lata))
 }
 
 test "Morty recolecta un cable"{
+	// TODO ???
 	morty
 	var cable = new Cable (30,10)
 	assert.that(morty.puedeRecolectar(cable))
+	
+	// TODO Pudieron resolver esto? Por qué no anduvo? No dejemos código comentado.
 	// Como validar que no arroja una excepcion? => Validamos lo que agregamos a la mochila de rick 
 	//assert.throwsExceptionWithMessage("NO PUEDE RECOLECTAR ESTE MATERIAL", {morty.recolectar(material)})
 }
