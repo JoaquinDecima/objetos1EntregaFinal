@@ -48,68 +48,6 @@ describe "Tests parte 2"{
 		assert.that(rick.mochila().contains(circuito))
 	}
 	
-	test "Bateria: Realizar"{
-		var cable1 = new Cable(10,2)
-		var lata1 = new Lata(300)
-		rick.recibir([cable1,lata1])
-		assert.equals(2,rick.mochila().size())
-		bateria.realizar(rick)
-		assert.equals(2,rick.mochila().size())
-		assert.that(rick.mochila().contains(cable1))
-		assert.that(rick.mochila().contains(bateria))
-	}
-	
-	test "Rick: quitarDeLaMochila"{
-		var cable1 = new Cable(10,2)
-		var lata1 = new Lata(100)
-		var materiaOscura = new MateriaOscura(lata1)
-		rick.recibir([cable1,lata1,materiaOscura])
-		rick.quitarDeLaMochila([cable1,materiaOscura])
-		assert.equals(1,rick.mochila().size())
-		assert.that(rick.mochila().contains(lata1))
-	} 
-	
-	test "Rick: experimentosQueSabeHacer"{
-		assert.equals(#{circuito,bateria,shock},rick.experimentosQueSabeHacer())
-	}
-	
-	test "Rick: materialesQueRequiere"{
-		var unCable = new Cable(10,2)
-		var mochila = [new Lata(10),unCable] 
-		rick.recibir(mochila)
-		assert.equals([unCable],circuito.materialesQueRequiere(mochila))
-			
-	}
-	test "Rick: Experimentos que PUEDE hacer NINGUNO"{
-		var mochila = [] 
-		rick.recibir(mochila)
-		assert.equals(#{},rick.experimentosQuePuedeRealizar())
-		
-	}
-	
-	
-	test "Rick: Realizar experimento bateria"{
-		var cable1 = new Cable(10,5)
-		var lata1 = new Lata(300)
-		var materiaOscura = new MateriaOscura(new Cable(5,3))
-		
-		rick.recibir([cable1,lata1,materiaOscura])
-		assert.equals(3,rick.mochila().size())
-		rick.realizar(bateria)
-		assert.equals(3,rick.mochila().size())
-	}
-
-	test "Rick: Realizar experimento circuito"{
-		var cable1 = new Cable(10,5)
-		
-		var materiaOscura = new MateriaOscura(new Cable(5,3))
-		
-		rick.recibir([cable1,materiaOscura])
-		assert.equals(2,rick.mochila().size())
-		rick.realizar(circuito)
-
-		assert.equals(2,rick.mochila().size())
-	}
 
 
 }
