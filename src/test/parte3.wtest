@@ -1,0 +1,35 @@
+import companieros.companiero.*
+import companieros.jerry.*
+import companieros.summer.*
+import companieros.humores.buen_humor.*
+import companieros.humores.mal_humor.*
+import companieros.humores.sobreexitado.*
+import materiales.lata.*
+import materiales.fleeb.*
+
+test "Recogen lata" {
+	
+	var lata = new Lata(50)
+	
+	morty.recolectar(lata)
+	jerry.recolectar(lata)
+	summer.recolectar(lata)
+
+	assert.that(true)
+	assert.equals(morty.energia(),50)
+	assert.equals(summer.energia(),60)
+	assert.equals(jerry.energia(),50)
+	
+}
+
+test "Jerry cambia de Humor"{
+	
+	var lata = new Lata(50)
+	var servivo = new Fleeb(30)
+	servivo.comerMaterial(lata)
+	
+	assert.equals(jerry.humor(),buenHumor)
+	
+	jerry.recolectar(servivo)
+	assert.equals(jerry.humor(),sobreexitado)
+}

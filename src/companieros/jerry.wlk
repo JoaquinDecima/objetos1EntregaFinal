@@ -7,6 +7,8 @@ object jerry inherits Companiero(100){
 
 	var humor = buenHumor
 	
+	method humor() = humor
+	
 	method ponerMalHumor(){
 		humor = malHumor
 	}

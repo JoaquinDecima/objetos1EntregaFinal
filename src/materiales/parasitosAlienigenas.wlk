@@ -8,6 +8,8 @@ class ParasitoAlienigena inherits Material{
 		acciones=_acciones 	
 	}
 	
+	override method esSerVivo() = true
+	
 	override method cantidadDeMetal()=10
 	
 	override method cuantaElectricidadGenera() = 5
