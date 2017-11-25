@@ -35,10 +35,14 @@ object rick {
 	method puedeRealizarExperimento(unExperimento) = self.experimentosQuePuedeRealizar().contains(unExperimento) 
 	
 	method realizar(unExperimento){
-			unExperimento.realizar(self)
+		unExperimento.realizar(self)
 	}
 	
-	method guardarEnMochila(unMaterial){
+	
+	/*A este metodo le cambie el nombre, sino podriamos hacer todo con recibir pero hay que acordarse de pasarle una lista..
+	Me parece que teniendo dos metodos queda mas claro el uso de cada uno.
+	*/
+	method guardarEnMochilaUnMaterial(unMaterial){
 		self.recibir([unMaterial])
 	}
 	
@@ -49,11 +53,7 @@ object rick {
 	method companiero() = companiero
 	
 	method quitarDeLaMochila(elementos){
-		elementos.forEach({elem => self.quitarElementoDeMochila(elem)})
-	}
-	
-	method quitarElementoDeMochila(elemento){
-		mochila.remove(elemento)
+		mochila.removeAll(elementos)
 	}
 
 }

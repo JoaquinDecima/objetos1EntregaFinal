@@ -11,11 +11,11 @@ object circuito inherits Experimento{
 		)
 	}
 	
-	
 	override method realizar(unRick){
 		super (unRick)
-		unRick.guardarEnMochila(self)
+		unRick.guardarEnMochilaUnMaterial(self)
 	}
+	
 	override method esRadioactivo() = componentes.any({unElemento=>unElemento.esRadioactivo()}) 
 	
 	override method cuantaElectricidadConduce() = 3 * componentes.sum({unElemento=>unElemento.cuantaElectricidadConduce()})

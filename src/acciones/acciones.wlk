@@ -1,4 +1,5 @@
 class EntregarTodo {
+	
 	method aplicar(unPersonaje){
 		unPersonaje.darTodoACompaniero() 
 	}
@@ -9,6 +10,7 @@ class QuitarUnoAlAzar {
 		unPersonaje.quitarUnoAlAzar()
 	}
 }
+
 class ModificarEnergia { 
 	const cantEnergia
 	
@@ -20,6 +22,7 @@ class ModificarEnergia {
 		unPersonaje.modificarEnergia(cantEnergia)
 	}
 }
+
 class RecolectarMaterialOculto {
 	const materialOculto
 	

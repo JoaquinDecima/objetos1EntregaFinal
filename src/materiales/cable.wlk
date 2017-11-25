@@ -14,6 +14,6 @@ class Cable inherits Material{
 		return 3 * seccion
 	}
 	
-	override method cantidadDeMetal() = longitud / 1000 * seccion
+	override method cantidadDeMetal() = longitud / 100 * seccion
 	
 }

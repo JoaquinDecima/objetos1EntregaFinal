@@ -27,7 +27,7 @@ describe "Test parte 1" {
 	test "Morty recolecta un cable"{
 		morty.recolectar(cable)
 		assert.equals(1,morty.mochila().size())
-		assert.equals(99.98,morty.energia())
+		assert.equals(99.80,morty.energia())
 	}
 	
 	
