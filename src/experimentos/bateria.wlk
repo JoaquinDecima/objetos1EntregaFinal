@@ -11,7 +11,7 @@ object bateria inherits Experimento{
 
 	override method realizar(unRick){
 		super(unRick)
-		unRick.guardarEnMochila(self)
+		unRick.guardarEnMochilaUnMaterial(self)
 		unRick.companiero().energia(unRick.companiero().energia()-self.energiaQueResta())
 	}
 	
