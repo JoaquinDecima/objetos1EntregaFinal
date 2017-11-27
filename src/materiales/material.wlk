@@ -28,8 +28,7 @@ class Material{
 
 	//Corregimos la forma de igualdad de los materiales
 	//Dos materiales con iguales caracteristicas son iguales pero no identicos (===)
-	
-	override method ==(unMaterial){ 
+		override method ==(unMaterial){ 
 		return unMaterial != null and (self.cuantaElectricidadConduce()==unMaterial.cuantaElectricidadConduce() and
 		self.esRadioactivo()==unMaterial.esRadioactivo() and
 		self.cuantaElectricidadConduce()==unMaterial.cuantaElectricidadConduce() and

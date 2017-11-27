@@ -8,25 +8,16 @@ class MateriaOscura inherits Material{
  	var materialBase
  	
  	
- 	constructor (_materialBase){
+ 	constructor (_materialBase) = super(null){
  		materialBase = _materialBase
  		}
  	
- 	override method cantidadDeMetal(){
- 		return materialBase.cantidadDeMetal()	
- 	}
+ 	override method cantidadDeMetal() = return materialBase.cantidadDeMetal()	
  	
- 	override method cuantaElectricidadConduce(){
- 		if (materialBase.puedeConducirElectricidad()){
- 			return materialBase.cuantaElectricidadConduce() / 2
- 		}	
- 		return 0
- 	}
+ 	override method cuantaElectricidadConduce() = materialBase.cuantaElectricidadConduce() / 2
+
  	
- 	override method cuantaElectricidadGenera(){
- 		if (materialBase.puedeGenerarElectricidad()){
- 			return materialBase.cuantaElectricidadGenera() * 2
- 		}	
- 		return 0
- 	}	
+ 	
+ 	override method cuantaElectricidadGenera() = materialBase.cuantaElectricidadGenera() * 2
+
 }

@@ -46,14 +46,16 @@ object rick {
 		self.recibir([unMaterial])
 	}
 	
+	method quitarDeLaMochila(elementos){
+		mochila.removeAll(elementos)
+	}
+	
+	
 	method companiero(unCompaniero){
 		companiero=unCompaniero
 	}
 	
 	method companiero() = companiero
 	
-	method quitarDeLaMochila(elementos){
-		mochila.removeAll(elementos)
-	}
 
 }

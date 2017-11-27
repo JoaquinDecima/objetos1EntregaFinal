@@ -21,7 +21,7 @@ test "Parasito alienigena se agrego a la mochila" {
 		assert.that(morty.mochila().contains(pa))
 }
 
-test "PA cambio comportamiento" {
+test "Parasito Alienigena cambio comportamiento" {
 		var unMaterial= new Lata (10)
 		var accion1 = new RecolectarMaterialOculto(unMaterial)
 		var accion2 = new EntregarTodo()
@@ -29,7 +29,7 @@ test "PA cambio comportamiento" {
 		var accion4 = new ModificarEnergia(10)
 		
 		
-		morty.companiero(rick) //provisorio
+		morty.companiero(rick) 
 		var pa=new ParasitoAlienigena([accion1,accion2,accion3,accion4])
 		assert.equals(100,morty.energia())
 		morty.recolectar(pa)

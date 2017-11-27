@@ -5,7 +5,7 @@ class Fleeb inherits Material{
 	var edad
 	var materialesQueComio = #{}
 	
-	constructor (_edad){
+	constructor (_edad) =super(null){
 		edad = _edad
 	}
 	

@@ -1,10 +1,10 @@
-import material.*
+import materiales.material.*
 
 class ParasitoAlienigena inherits Material{
 	
 	var acciones //una lista de acciones en un orden dado
 	
-	constructor (_acciones){
+	constructor (_acciones)=super(null){
 		acciones=_acciones 	
 	}
 	
@@ -14,7 +14,7 @@ class ParasitoAlienigena inherits Material{
 	
 	override method cuantaElectricidadGenera() = 5
 	
-	override method alterarPersonalidadDe(unPersonaje){ // llamado por un personaje al ser recolectado
+	override method alterarPersonalidadDe(unPersonaje){ 
 		acciones.forEach({accion=>accion.aplicar(unPersonaje)})
 	}
 	
