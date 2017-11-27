@@ -1,4 +1,9 @@
 class Material{
+	var componentes
+	
+	constructor (_componentes){
+		componentes=_componentes
+	}
 	
 	method esRadioactivo() =  false
 	
@@ -21,25 +26,29 @@ class Material{
 	method cantidadDeMetal() 
 }
 
-class NuevoMaterial inherits Material{
-	var esRadioActivo
-	var electricidadQueGenera
-	var electricidadQueConduce
-	var cantMetal 
+
+class Circuito inherits Material{
+
+	override method cuantaElectricidadGenera() = 0
 	
-	constructor (_esRadioActivo,_electricidadQueGenera,_electricidadQueConduce,_cantMetal){
-		esRadioActivo=_esRadioActivo
-		electricidadQueConduce=_electricidadQueConduce
-		electricidadQueGenera=_electricidadQueGenera
-		cantMetal=_cantMetal
-		
-	}
+	override method esRadioactivo() = componentes.any({unElemento=>unElemento.esRadioactivo()}) 
 	
-	override method esRadioactivo() =  esRadioActivo
+	override method cuantaElectricidadConduce() = 3 * componentes.sum({unElemento=>unElemento.cuantaElectricidadConduce()})
 	
-	override method cuantaElectricidadConduce() = electricidadQueConduce
+	override method cantidadDeMetal() = componentes.sum({unElemento=>unElemento.cantidadDeMetal()})
+
 	
-	override method cuantaElectricidadGenera() = electricidadQueGenera
+}
+
+class Bateria inherits Material{
+
 	
-	override method cantidadDeMetal()=cantMetal
+	override method cuantaElectricidadGenera() = 2 * self.cantidadDeMetal()
+	
+	override method esRadioactivo() = true
+	
+	override method cuantaElectricidadConduce()=0
+	
+	override method cantidadDeMetal() = componentes.sum({unElemento=>unElemento.cantidadDeMetal()})
+
 }

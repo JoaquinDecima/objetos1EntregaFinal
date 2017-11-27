@@ -12,16 +12,8 @@ object circuito inherits Experimento{
 	override method realizar(unRick){
 		super (unRick)
 		
-		var nuevoMaterial = new NuevoMaterial(self.esRadioactivo(),
-											  0,
-											  self.cuantaElectricidadConduce(),
-											  self.cantidadDeMetal())
-		unRick.guardarEnMochilaUnMaterial(nuevoMaterial)
+		unRick.guardarEnMochilaUnMaterial(new Circuito (componentes))
 	}
 	
-	method esRadioactivo() = componentes.any({unElemento=>unElemento.esRadioactivo()}) 
-	
-	method cuantaElectricidadConduce() = 3 * componentes.sum({unElemento=>unElemento.cuantaElectricidadConduce()})
-	
-	method cantidadDeMetal() = componentes.sum({unElemento=>unElemento.cantidadDeMetal()})
+
 }

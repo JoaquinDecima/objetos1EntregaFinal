@@ -65,5 +65,5 @@ describe "Test sobre Rick"{
 		assert.equals(2,rick.mochila().size())
 	}
 }
-	}
+	
 	
