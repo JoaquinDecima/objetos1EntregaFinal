@@ -13,7 +13,7 @@ import materiales.estrategia.alAzar.*
 import materiales.estrategia.menorCantidadMetal.*
 import materiales.estrategia.mejorGenerador.*
 import materiales.estrategia.ecologico.*
-
+import materiales.material.*
 
 test "Parasito alienigena se agrego a la mochila" {
 		var pa=new ParasitoAlienigena([])
@@ -101,10 +101,14 @@ test "Bateria con estrategia menorCantidadMetal" {
 	test "Bateria con estrategia mejorGenerador" {
 		var cable = new Cable(10,2)
 		var lata = new Lata(300)
-		var otraLata = new Lata(350)
-		rick.recibir([cable,lata,otraLata])
+		var unaBateria
+		rick.recibir([cable,lata])
+		
+		unaBateria=new Bateria(bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
+		
 		bateria.realizar(rick)
-		assert.equals([bateria],bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
+		
+		assert.equals([unaBateria],bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
 	}
 	
 	test "Bateria con estrategia ecologico"{

@@ -24,6 +24,15 @@ class Material{
 	method alterarPersonalidadDe(unPersonaje){} //para polimorfismo de materiales. Solo lo usa parasitoAlienigena
 
 	method cantidadDeMetal() 
+	
+
+	override method ==(unMaterial){
+		return (self.cuantaElectricidadConduce()==unMaterial.cuantaElectricidadConduce() and
+		self.esRadioactivo()==unMaterial.esRadioactivo() and
+		self.cuantaElectricidadConduce()==unMaterial.cuantaElectricidadConduce() and
+		self.cantidadDeMetal()==unMaterial.cantidadDeMetal())
+		
+	}
 }
 
 
@@ -36,12 +45,10 @@ class Circuito inherits Material{
 	override method cuantaElectricidadConduce() = 3 * componentes.sum({unElemento=>unElemento.cuantaElectricidadConduce()})
 	
 	override method cantidadDeMetal() = componentes.sum({unElemento=>unElemento.cantidadDeMetal()})
-
 	
 }
 
 class Bateria inherits Material{
-
 	
 	override method cuantaElectricidadGenera() = 2 * self.cantidadDeMetal()
 	
