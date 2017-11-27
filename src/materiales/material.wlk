@@ -25,7 +25,6 @@ class Material{
 
 	method cantidadDeMetal() 
 	
-
 	//Corregimos la forma de igualdad de los materiales
 	//Dos materiales con iguales caracteristicas son iguales pero no identicos (===)
 		override method ==(unMaterial){ 

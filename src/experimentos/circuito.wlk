@@ -11,7 +11,6 @@ object circuito inherits Experimento{
 	
 	override method realizar(unRick){
 		super (unRick)
-		
 		unRick.guardarEnMochilaUnMaterial(new Circuito (componentes))
 	}
 	
