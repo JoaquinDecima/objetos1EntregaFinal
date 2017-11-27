@@ -23,7 +23,6 @@ test "Parasito alienigena se agrego a la mochila" {
 
 test "PA cambio comportamiento" {
 		var unMaterial= new Lata (10)
-		var quique = new Companiero(50) // al elegir un compañero habria que crear metodo recibir
 		var accion1 = new RecolectarMaterialOculto(unMaterial)
 		var accion2 = new EntregarTodo()
 		var accion3 = new RecolectarMaterialOculto(unMaterial)
@@ -41,7 +40,6 @@ test "Accion Entregar Todo" {
 		var a= new Lata (10)
 		var b= new Lata (10)
 		
-		var pepe= new Companiero(50) // al elegir un compañero habria que crear metodo recibir
 		morty.companiero(rick) //provisorio
 		
 		var accion = new EntregarTodo()
@@ -61,7 +59,6 @@ test "Accion Entregar Todo" {
 test "Accion Quitar Uno al azar" {
 		var a= new Lata (10)
 		var b= new Lata (10)
-		var pepe= new Companiero(50) // al elegir un compañero habria que crear metodo recibir
 		
 		var accion = new QuitarUnoAlAzar()
 		var pa=new ParasitoAlienigena([accion])
@@ -75,8 +72,6 @@ test "Accion Quitar Uno al azar" {
 }
 
 test "Accion : Modificar energia"{
-		var pepe= new Companiero(50) // al elegir un compañero habria que crear metodo recibir
-		
 		var accion = new ModificarEnergia(-5)
 		var pa=new ParasitoAlienigena([accion])
 		
@@ -87,10 +82,7 @@ test "Accion : Modificar energia"{
 
 test "Accion : Recolectar material oculto"{
 		var lata =new Lata(1)
-		
 		var accion = new RecolectarMaterialOculto([lata])
-		var pa=new ParasitoAlienigena([accion])
-		
 		assert.equals([],morty.mochila())
 
 }

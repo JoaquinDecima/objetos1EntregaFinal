@@ -1,6 +1,6 @@
 import materiales.material.*
 
-class Experimento inherits Material{
+class Experimento{
 
 	var componentes = []
 
@@ -8,8 +8,8 @@ class Experimento inherits Material{
 	
 	method componentes(unosMateriales) {
 		componentes=unosMateriales
-	}		
-
+	}
+	
 		
 	method materialesQueRequiere(mochila, unaEstrategia)
 	
@@ -21,7 +21,5 @@ class Experimento inherits Material{
 		unRick.quitarDeLaMochila(materialesComponentes)
 		self.componentes(materialesComponentes)
 	}
-	
-	override method cantidadDeMetal() = componentes.sum({material=>material.cantidadDeMetal()})
-	
+		
 }

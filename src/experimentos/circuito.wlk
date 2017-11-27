@@ -1,8 +1,6 @@
 import materiales.material.*
 import experimentos.experimento.*
 
-
-			
 object circuito inherits Experimento{
 	
 	override method materialesQueRequiere(mochila,estrategia) { 
@@ -13,10 +11,17 @@ object circuito inherits Experimento{
 	
 	override method realizar(unRick){
 		super (unRick)
-		unRick.guardarEnMochilaUnMaterial(self)
+		
+		var nuevoMaterial = new NuevoMaterial(self.esRadioactivo(),
+											  0,
+											  self.cuantaElectricidadConduce(),
+											  self.cantidadDeMetal())
+		unRick.guardarEnMochilaUnMaterial(nuevoMaterial)
 	}
 	
-	override method esRadioactivo() = componentes.any({unElemento=>unElemento.esRadioactivo()}) 
+	method esRadioactivo() = componentes.any({unElemento=>unElemento.esRadioactivo()}) 
 	
-	override method cuantaElectricidadConduce() = 3 * componentes.sum({unElemento=>unElemento.cuantaElectricidadConduce()})
+	method cuantaElectricidadConduce() = 3 * componentes.sum({unElemento=>unElemento.cuantaElectricidadConduce()})
+	
+	method cantidadDeMetal() = componentes.sum({unElemento=>unElemento.cantidadDeMetal()})
 }

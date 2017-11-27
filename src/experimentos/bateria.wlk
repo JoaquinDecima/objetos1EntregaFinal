@@ -1,4 +1,5 @@
 import experimentos.experimento.*
+import materiales.material.*
 
 
 object bateria inherits Experimento{
@@ -11,14 +12,16 @@ object bateria inherits Experimento{
 
 	override method realizar(unRick){
 		super(unRick)
-		unRick.guardarEnMochilaUnMaterial(self)
+		var nuevoMaterial=new NuevoMaterial(self.esRadioActivo(),self.electricidadQueGenera(),self.electricidadQueConduce(),self.cantidadDeMetal())	
+		unRick.guardarEnMochilaUnMaterial(nuevoMaterial)
 		unRick.companiero().energia(unRick.companiero().energia()-self.energiaQueResta())
+		//Mejorar como reduce /incrementa energia
 	}
 	
-	override method energiaQueResta() = 5
 	
-	override method cuantaElectricidadGenera() = 2 * self.cantidadDeMetal()
-	
-	override method esRadioactivo() = true
- 	
+	method energiaQueResta() = 5
+	method electricidadQueGenera() = 2 * self.cantidadDeMetal()
+	method electricidadQueConduce()=0
+	method cantidadDeMetal() = componentes.sum({unElemento=>unElemento.cantidadDeMetal()})
+	method esRadioActivo()=true
 }

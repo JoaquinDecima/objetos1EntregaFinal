@@ -48,7 +48,8 @@ describe "Tests parte 2"{
 		circuito.realizar(rick)
 		assert.equals(2,rick.mochila().size())
 		assert.that(rick.mochila().contains(materiaOscura))
-		assert.that(rick.mochila().contains(circuito))
+		//assert.that(rick.mochila().contains(circuito)) ya no existe material circuito
+		assert.equals(2,rick.mochila().size())
 	}
 	
 	test "Bateria: Realizar"{
@@ -59,7 +60,8 @@ describe "Tests parte 2"{
 		bateria.realizar(rick)
 		assert.equals(2,rick.mochila().size())
 		assert.that(rick.mochila().contains(cable1))
-		assert.that(rick.mochila().contains(bateria))
+		//assert.that(rick.mochila().contains(bateria)) //ya no existe material bateria
+		assert.equals(2,rick.mochila().size()) 
 	}
 	
 	test "Rick: quitarDeLaMochila"{
