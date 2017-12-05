@@ -1,7 +1,8 @@
 import materiales.material.*
 
 class Experimento{
-
+	// TODO Realmente creo que deberían eliminar los componentes de acá. Por favor miren los comentarios 
+	// en la corrección de la entrega 1.
 	var componentes = []
 
 	method componentes()=componentes

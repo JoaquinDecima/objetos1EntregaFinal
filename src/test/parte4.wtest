@@ -89,12 +89,14 @@ test "Accion : Recolectar material oculto"{
 
 //-------- Estrategias ------------
 
-
+// Por qué esto no está en otro archivo como vienen haciendo hasta acá?
 test "Bateria con estrategia menorCantidadMetal" {
 		var unaLata = new Lata(250)
 		var otraLata= new Lata(201)
 		var otraLataMas = new Lata(250)
 		var mochila = [unaLata,otraLata,otraLataMas] 
+		
+		// TODO Para construir la batería se necesita un material radiactivo, este test no respeta el enunciado.
 		assert.equals([otraLata],bateria.materialesQueRequiere(mochila,menorCantidadMetal))
 	}
 
@@ -108,6 +110,7 @@ test "Bateria con estrategia menorCantidadMetal" {
 		
 		bateria.realizar(rick)
 		
+		// TODO Para construir la batería se necesita un material radiactivo, este test no respeta el enunciado.
 		assert.equals([unaBateria],bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
 	}
 	

@@ -34,15 +34,3 @@ class RecolectarMaterialOculto {
 		unPersonaje.recolectar(materialOculto)
 	}
 }
-
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-

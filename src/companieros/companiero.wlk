@@ -13,6 +13,7 @@ class Companiero{
 		energia = _energia
 	}
 	
+	// TODO Corrijan esto.
 	//lo utiliza parasitosAlienigenas
 	method companiero(unCompaniero){ //Provisorio, luego habra que incluirlo dentro del constructor. No lo hice para q no rompa
 		companiero=unCompaniero

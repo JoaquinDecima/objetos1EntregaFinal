@@ -4,6 +4,7 @@ import experimento.*
 object shock inherits Experimento{
 
 	override method materialesQueRequiere(mochila,estrategia){
+		// TODO No se está usando la estrategia de selección aquí.
 		return mochila.findOrElse({unMaterial=>unMaterial.cuantaElectricidadConduce()>=1 or 
 							unMaterial.cuantaElectricidadGenera()>=1},{[]})
 	}

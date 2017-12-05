@@ -1,4 +1,5 @@
 class Material{
+	// TODO No todos los materiales tienen componentes!
 	var componentes
 	
 	constructor (_componentes){
