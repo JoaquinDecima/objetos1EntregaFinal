@@ -5,7 +5,7 @@ class Cable inherits Material{
 	var longitud
 	var seccion
 	
-	constructor (_longitud,_seccion) =super(null){
+	constructor (_longitud,_seccion){
 		longitud = _longitud
 		seccion = _seccion
 	}

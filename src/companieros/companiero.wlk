@@ -27,6 +27,7 @@ class Companiero{
 		energia = unaCantidadDeEnergia
 	}
 	
+	
 	method mochila () = mochila
 	
 	method guardar(unMaterial){

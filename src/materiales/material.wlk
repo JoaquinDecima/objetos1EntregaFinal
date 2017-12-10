@@ -1,9 +1,4 @@
 class Material{
-	var componentes
-	
-	constructor (_componentes){
-		componentes=_componentes
-	}
 	
 	method esRadioactivo() =  false
 	
@@ -27,7 +22,7 @@ class Material{
 	
 	//Corregimos la forma de igualdad de los materiales
 	//Dos materiales con iguales caracteristicas son iguales pero no identicos (===)
-		override method ==(unMaterial){ 
+	override method ==(unMaterial){ 
 		return unMaterial != null and (self.cuantaElectricidadConduce()==unMaterial.cuantaElectricidadConduce() and
 		self.esRadioactivo()==unMaterial.esRadioactivo() and
 		self.cuantaElectricidadConduce()==unMaterial.cuantaElectricidadConduce() and
@@ -38,7 +33,13 @@ class Material{
 
 
 class Circuito inherits Material{
-
+	
+	var componentes
+	
+	constructor (_componentes){
+		componentes=_componentes
+	}
+	
 	override method cuantaElectricidadGenera() = 0
 	
 	override method esRadioactivo() = componentes.any({unElemento=>unElemento.esRadioactivo()}) 
@@ -50,6 +51,12 @@ class Circuito inherits Material{
 }
 
 class Bateria inherits Material{
+	
+	var componentes
+	
+	constructor (_componentes){
+		componentes=_componentes
+	}
 	
 	override method cuantaElectricidadGenera() = 2 * self.cantidadDeMetal()
 	

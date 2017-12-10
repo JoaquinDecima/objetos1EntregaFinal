@@ -1,0 +1,60 @@
+import companieros.companiero.*
+import materiales.parasitosAlienigenas.*
+import acciones.acciones.*
+import rick.*
+import experimentos.circuito.*
+import experimentos.bateria.*
+import experimentos.shock.*
+import materiales.lata.*
+import materiales.cable.*
+import materiales.fleeb.*
+import materiales.materia_oscura.*
+import materiales.estrategia.alAzar.*
+import materiales.estrategia.menorCantidadMetal.*
+import materiales.estrategia.mejorGenerador.*
+import materiales.estrategia.ecologico.*
+import materiales.material.*
+
+describe "Test sobre alternativas de seleccion de materiales" {
+
+	var lata = new Lata(100)
+	var unFleeb = new Fleeb(20)
+	var otraLata = new Lata(4000)
+	var otraLataMas = new Lata(250)
+	var otroCable = new Cable(5,1)
+	var otroFleeb = new Fleeb(1)
+	
+	fixture{
+		otroFleeb.comerMaterial(otraLata)
+		otroFleeb.comerMaterial(new ParasitoAlienigena(new ModificarEnergia(0)))
+	}
+
+
+test "Bateria con estrategia menorCantidadMetal" {
+	
+
+		unFleeb.comerMaterial(new Lata(3500))
+		
+		rick.recibir([unFleeb,otroFleeb,otraLataMas,otroCable])
+		assert.equals([otraLataMas,unFleeb],bateria.materialesQueRequiere(rick.mochila(),menorCantidadMetal))
+	}
+
+
+test "Bateria con estrategia mejorGenerador" {
+	
+		unFleeb.comerMaterial(lata)
+	
+		rick.recibir([unFleeb,otroFleeb,otraLataMas,otroCable])
+		assert.equals([otroFleeb,unFleeb],bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
+	}
+
+	
+test "Bateria con estrategia ecologico"{
+
+		unFleeb.comerMaterial(lata)	
+		
+		rick.recibir([unFleeb,otroFleeb,otraLataMas,otroCable])
+		assert.equals([otroFleeb,unFleeb],bateria.materialesQueRequiere(rick.mochila(),ecologico))
+	}
+
+}

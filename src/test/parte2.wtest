@@ -16,9 +16,9 @@ describe "Tests parte 2"{
 	
 	test "Circuito: Mochila NO cumpleRequisitos" {
 		var mochila = [new Lata(10)] 
-		assert.notThat(circuito.cumpleRequisitos(mochila,alAzar))
-	
+		assert.throwsExceptionWithMessage("Requisitos insuficientes", {circuito.cumpleRequisitos(mochila,alAzar)})
 	}
+	
 	test "Circuito: Mochila SI cumpleRequisitos" {
 		//Cable con 2 de seccion conduce 6 (3*seccion)
 		var mochila = [new Lata(10),new Cable(10,2)] 
@@ -30,11 +30,12 @@ describe "Tests parte 2"{
 		assert.equals([],circuito.materialesQueRequiere(mochila,alAzar))
 	}
 	
+	//si uso estrategia al azar deberia devolver un objeto cualquiera que cumpla el criterio
 	test "Circuito: materialesQueRequiere SI devuelve materiales"{
 		var unCable=new Cable(10,2)
 		var otroCable = new Cable(10,3)
 		var mochila = [new Lata(10),unCable,otroCable] 
-		assert.equals([unCable,otroCable],circuito.materialesQueRequiere(mochila,alAzar))
+		assert.equals(circuito.materialesQueRequiere(mochila,alAzar).size()==1)
 	}
 	
 	
@@ -45,10 +46,8 @@ describe "Tests parte 2"{
 		rick.recibir([cable1,lata1,materiaOscura])
 		assert.equals(3,rick.mochila().size())
 		circuito.realizar(rick)
-		assert.equals(2,rick.mochila().size())
 		assert.that(rick.mochila().contains(materiaOscura))
-		//assert.that(rick.mochila().contains(circuito)) ya no existe material circuito
-		assert.equals(2,rick.mochila().size())
+		assert.equals(3,rick.mochila().size())
 	}
 	
 

@@ -2,6 +2,7 @@ import materiales.material.*
 
 class Experimento{
 
+ 
 	var componentes = []
 
 	method componentes()=componentes
@@ -10,10 +11,14 @@ class Experimento{
 		componentes=unosMateriales
 	}
 	
+
 		
 	method materialesQueRequiere(mochila, unaEstrategia)
 	
-	method cumpleRequisitos(mochila, unaEstrategia) = self.materialesQueRequiere(mochila,unaEstrategia).size()>0
+	method cumpleRequisitos(mochila, unaEstrategia) {
+		if (self.materialesQueRequiere(mochila,unaEstrategia).isEmpty()){self.error("Requisitos insuficientes")}
+		return true					
+	}
 	
 	method realizar(unRick){
 		var materialesComponentes = self.materialesQueRequiere(unRick.mochila(),unRick.estrategia())

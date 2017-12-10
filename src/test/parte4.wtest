@@ -87,39 +87,3 @@ test "Accion : Recolectar material oculto"{
 
 }
 
-//-------- Estrategias ------------
-
-
-test "Bateria con estrategia menorCantidadMetal" {
-		var unaLata = new Lata(250)
-		var otraLata= new Lata(201)
-		var otraLataMas = new Lata(250)
-		var mochila = [unaLata,otraLata,otraLataMas] 
-		assert.equals([otraLata],bateria.materialesQueRequiere(mochila,menorCantidadMetal))
-	}
-
-	test "Bateria con estrategia mejorGenerador" {
-		var cable = new Cable(10,2)
-		var lata = new Lata(300)
-		var unaBateria
-		rick.recibir([cable,lata])
-		
-		unaBateria=new Bateria(bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
-		
-		bateria.realizar(rick)
-		
-		assert.equals([unaBateria],bateria.materialesQueRequiere(rick.mochila(),mejorGenerador))
-	}
-	
-	test "Bateria con estrategia ecologico"{
-		var cable = new Cable(10,7)
-		var lata = new Lata(300)
-		var unFleeb = new Fleeb(12)
-		unFleeb.comerMaterial(lata)
-		var otraLata = new Lata(350)
-		var otroCable = new Cable(5,4)
-		rick.recibir([cable,unFleeb,otraLata,otroCable])
-		assert.equals([unFleeb],bateria.materialesQueRequiere(rick.mochila(),ecologico))
-	}
-
- //----------------------------------

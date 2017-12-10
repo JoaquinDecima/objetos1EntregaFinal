@@ -5,7 +5,7 @@ class Fleeb inherits Material{
 	var edad
 	var materialesQueComio = #{}
 	
-	constructor (_edad) =super(null){
+	constructor (_edad) {
 		edad = _edad
 	}
 	
@@ -14,11 +14,11 @@ class Fleeb inherits Material{
 	}
 	
 	override method cuantaElectricidadConduce(){
-		return materialesQueComio.min({material => material.cuantaElectricidadConduce()})
+		return materialesQueComio.map({material => material.cuantaElectricidadConduce()}).min()
 	}
 	
 	override method cuantaElectricidadGenera(){
-		return materialesQueComio.max({material => material.cuantaElectricidadGenera()})
+		return materialesQueComio.map({material => material.cuantaElectricidadGenera()}).max()
 	}
 	
 	override method cantidadDeMetal(){

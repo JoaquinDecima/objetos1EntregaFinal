@@ -37,7 +37,8 @@ describe "Test sobre Rick"{
 	test "Rick: Experimentos que PUEDE hacer NINGUNO"{
 		var mochila = [] 
 		rick.recibir(mochila)
-		assert.equals(#{},rick.experimentosQuePuedeRealizar())
+		assert.throwsExceptionWithMessage("Requisitos insuficientes", {rick.experimentosQuePuedeRealizar()})
+//		assert.equals(#{},rick.experimentosQuePuedeRealizar())
 		
 	}
 	
