@@ -1,12 +1,6 @@
 
-object malHumor {
+object malHumor inherits Humor{
 
 	method cantMaxMochila() = 1
-	
-	method recolectar(unCompaniero,unMaterial){
-		if (not unCompaniero.puedeRecolectar(unMaterial)) unCompaniero.error ("No tiene suficiente energia")
-		unCompaniero.guardar(unMaterial)
-		unCompaniero.consumirEnergia(unMaterial.energiaQueResta())
-	}
 
 }
