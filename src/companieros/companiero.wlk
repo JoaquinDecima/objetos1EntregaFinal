@@ -5,13 +5,9 @@
  import materiales.materia_oscura.*
  
 class Companiero{
-	var energia
+	var energia = 100 //Es una decicion de la implementacion
 	var companiero
 	var mochila = []
-	
-	constructor (_energia){ 
-		energia = _energia
-	}
 	
 	//lo utiliza parasitosAlienigenas
 	method companiero(unCompaniero){ //Provisorio, luego habra que incluirlo dentro del constructor. No lo hice para q no rompa

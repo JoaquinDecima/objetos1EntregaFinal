@@ -1,13 +1,11 @@
 
-object sobreexitado {
+object sobreexitado inherits Humor {
 	var chance = [1,2,3,4]
 
 	method cantMaxMochila() = 6
 	
-	method recolectar(unCompaniero,unMaterial){
-		if (not unCompaniero.puedeRecolectar(unMaterial)) unCompaniero.error ("No tiene suficiente energia")
-		unCompaniero.guardar(unMaterial)
-		unCompaniero.consumirEnergia(unMaterial.energiaQueResta())
+	override method recolectar(unCompaniero,unMaterial){
+		super(unCompaniero,unMaterial)
 		if(chance.anyOne() == 1){
 			unCompaniero.vaciarMochila()
 		}
