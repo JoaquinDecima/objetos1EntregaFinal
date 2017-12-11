@@ -1,4 +1,4 @@
-
+import humor.*
 
 object buenHumor inherits Humor{
 	

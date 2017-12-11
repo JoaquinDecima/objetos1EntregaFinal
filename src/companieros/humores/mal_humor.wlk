@@ -1,3 +1,4 @@
+import humor.*
 
 object malHumor inherits Humor{
 

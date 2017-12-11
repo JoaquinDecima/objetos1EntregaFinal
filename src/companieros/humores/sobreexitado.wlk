@@ -1,3 +1,4 @@
+import humor.*
 
 object sobreexitado inherits Humor {
 	var chance = [1,2,3,4]
