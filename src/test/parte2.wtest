@@ -16,7 +16,8 @@ describe "Tests parte 2"{
 	
 	test "Circuito: Mochila NO cumpleRequisitos" {
 		var mochila = [new Lata(10)] 
-		assert.throwsExceptionWithMessage("Requisitos insuficientes", {circuito.cumpleRequisitos(mochila,alAzar)})
+//		assert.throwsExceptionWithMessage("Requisitos insuficientes", {circuito.cumpleRequisitos(mochila,alAzar)})
+		assert.notThat(circuito.cumpleRequisitos(mochila,alAzar))
 	}
 	
 	test "Circuito: Mochila SI cumpleRequisitos" {

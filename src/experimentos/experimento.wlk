@@ -16,7 +16,7 @@ class Experimento{
 	method materialesQueRequiere(mochila, unaEstrategia)
 	
 	method cumpleRequisitos(mochila, unaEstrategia) {
-		if (self.materialesQueRequiere(mochila,unaEstrategia).isEmpty()){self.error("Requisitos insuficientes")}
+		if (self.materialesQueRequiere(mochila,unaEstrategia).isEmpty()) return false
 		return true					
 	}
 	
