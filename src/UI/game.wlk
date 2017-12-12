@@ -12,7 +12,7 @@ object juego {
 		game.title("Rick & Morty")
 		game.height(8)
 		game.width(16)
-		game.ground("moon.jpg")
+		game.ground("assets/moon.jpg")
 		
 		
 		var morty =new MortyMov()
@@ -72,21 +72,21 @@ object juego {
 
 
 class LataMov inherits Lata{
-	const imagen ="lata.gif"
+	const imagen ="assets/lata.gif"
 }
 class FleebMov inherits Fleeb{
-	const imagen ="fleeb.png"
+	const imagen ="assets/fleeb.png"
 }
 class MateriaOscuraMov inherits MateriaOscura{
-	const imagen ="materiaoscura.png"
+	const imagen ="assets/materiaoscura.png"
 }
 class CableMov inherits Cable{
-	const imagen ="cable.png"
+	const imagen ="assets/cable.png"
 }
 
 class MortyMov inherits Companiero {
 	var posicion = game.at(1,0)
-	const imagen = "morty50.png"
+	method imagen() = "assets/morty50.png"
 	
 	method izquierda() {
 		posicion.moveLeft(1)
