@@ -12,11 +12,10 @@ object juego {
 		game.title("Rick & Morty")
 		game.height(8)
 		game.width(16)
-//		game.ground("assets/moon.jpg")
-		
+		new Position(0,0).drawElement(fondo)
 		
 		var morty =new MortyMov()
-		new Position(0,0).drawElement(fondo)
+		
 		new Position(0,0).drawElement(rick)
 		
 		
@@ -24,10 +23,8 @@ object juego {
 		D.onPressDo {morty.darObjetosA(rick)}
 		R.onPressDo {morty.recolectar(morty.queHayAqui().first())}
 		
-		M.onPressDo {game.say(morty,"Tengo " + self.listaATexto(morty.mochila()))
-						game.say(rick,"Tengo " + self.listaATexto(rick.mochila()))
-					}
-		
+		M.onPressDo {game.say(morty,"Tengo " + self.listaATexto(morty.mochila()))}
+		N.onPressDo {game.say(rick,"Tengo " + self.listaATexto(rick.mochila()))	}
 
 		NUM_1.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().get(0))}
 		NUM_2.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().get(1))}
@@ -49,13 +46,14 @@ object juego {
 			
 	
 		//Incluyo varios materiales en tablero
-		var random = [2,3,4,5,6,7,8]
-		new Position(random.anyOne(),random.anyOne()).drawElement(materiales.anyOne())
-		new Position(random.anyOne(),random.anyOne()).drawElement(materiales.anyOne())
-		new Position(random.anyOne(),random.anyOne()).drawElement(materiales.anyOne())
-		new Position(random.anyOne(),random.anyOne()).drawElement(materiales.anyOne())
-		new Position(random.anyOne(),random.anyOne()).drawElement(materiales.anyOne())
-		new Position(random.anyOne(),random.anyOne()).drawElement(materiales.anyOne())
+		var randomX = [1,2,3,4,5,6,7,8,9,10,11,12]
+		var randomY = [0,1,2,3]
+		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
+		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
+		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
+		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
+		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
+		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
 		
 	
 		
@@ -77,7 +75,7 @@ object fondo{
 
 
 class LataMov inherits Lata{
-	const imagen ="assets/lata.gif"
+	const imagen ="assets/lata.png"
 }
 class FleebMov inherits Fleeb{
 	const imagen ="assets/fleeb.png"
