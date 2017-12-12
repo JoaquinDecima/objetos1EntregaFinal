@@ -16,6 +16,8 @@ object rick {
 	
 	method mochila() = mochila
 	
+	method imagen()="rick50.png"	
+	
 	method cambiarEstrategia(unaEstrategia){
 		estrategia=unaEstrategia
 	}
