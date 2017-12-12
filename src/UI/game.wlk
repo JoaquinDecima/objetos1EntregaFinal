@@ -12,10 +12,11 @@ object juego {
 		game.title("Rick & Morty")
 		game.height(8)
 		game.width(16)
-		game.ground("assets/moon.jpg")
+//		game.ground("assets/moon.jpg")
 		
 		
 		var morty =new MortyMov()
+		new Position(0,0).drawElement(fondo)
 		new Position(0,0).drawElement(rick)
 		
 		
@@ -68,6 +69,10 @@ object juego {
 		
 		
 	}
+}
+
+object fondo{
+	const imagen = "assets/fondo.png"
 }
 
 
