@@ -14,9 +14,10 @@ object rick {
 	var companiero = morty 
 	var estrategia = alAzar
 	
+	
 	method mochila() = mochila
 	
-	method imagen()="rick50.png"	
+	method imagen()="assets/rick50.png"	
 	
 	method cambiarEstrategia(unaEstrategia){
 		estrategia=unaEstrategia

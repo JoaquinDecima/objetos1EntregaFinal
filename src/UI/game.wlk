@@ -16,7 +16,7 @@ object juego {
 		
 		
 		var morty =new MortyMov()
-		new Position(1,5).drawElement(rick)
+		new Position(0,0).drawElement(rick)
 		
 		
 		E.onPressDo {game.say(rick, "Puedo hacer : "+ rick.experimentosQuePuedeRealizar()) }
@@ -41,7 +41,7 @@ object juego {
 		var lata =new LataMov(500)
 		var lataParaMateriaOscura =new LataMov(500)
 		var fleeb = new FleebMov(38)
-		var materiaOscura= new MateriaOscura(lataParaMateriaOscura)
+		var materiaOscura= new MateriaOscuraMov(lataParaMateriaOscura)
 		var materiales =[cable,lata,fleeb,materiaOscura]	
 		
 		
