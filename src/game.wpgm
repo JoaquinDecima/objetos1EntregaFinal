@@ -1,0 +1,6 @@
+import UI.game.*
+
+
+program RickYMortyGame {
+	juego.inicio()
+}
