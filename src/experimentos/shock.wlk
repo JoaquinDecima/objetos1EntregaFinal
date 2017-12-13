@@ -4,8 +4,8 @@ import experimento.*
 object shock inherits Experimento{
 
 	override method materialesQueRequiere(mochila,estrategia){
-		return mochila.findOrElse({unMaterial=>unMaterial.cuantaElectricidadConduce()>=1 or 
-							unMaterial.cuantaElectricidadGenera()>=1},{[]})
+		return mochila.filter({unMaterial=>unMaterial.cuantaElectricidadConduce() >= 1}) +
+				mochila.filter ({otroMaterial => otroMaterial.cuantaElectricidadGenera()>=1})
 	}
 	
 	override method realizar(unRick){

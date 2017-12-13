@@ -34,24 +34,37 @@ describe "Test sobre Rick"{
 		assert.equals([unCable],circuito.materialesQueRequiere(mochila,alAzar))
 			
 	}
+	
 	test "Rick: Experimentos que PUEDE hacer NINGUNO"{
 		var mochila = [] 
 		rick.recibir(mochila)
-		assert.that(rick.experimentosQuePuedeRealizar().isEmpty())
+		assert.throwsExceptionWithMessage("Materiales insuficientes", {rick.experimentosQuePuedeRealizar()})
+		//assert.that(rick.experimentosQuePuedeRealizar().isEmpty())
 		
+	}
+	
+	test "Rick: Puede realizar todos los experimentos"{
+		var unFleeb = new Fleeb(20)
+		unFleeb.comerMaterial(new Lata(1))
+		var otraLataMas = new Lata(250)
+		var otroCable = new Cable(5,1)
+		rick.recibir([unFleeb,otraLataMas,otroCable])
+		assert.equals(#{bateria,circuito,shock},rick.experimentosQuePuedeRealizar())
 	}
 	
 	
 	test "Rick: Realizar experimento bateria"{
-		var cable1 = new Cable(10,5)
-		var lata1 = new Lata(300)
-		var materiaOscura = new MateriaOscura(new Cable(5,3))
+		var unFleeb = new Fleeb(20)
+		unFleeb.comerMaterial(new Lata(1))
+		var otraLataMas = new Lata(250)
+		var otroCable = new Cable(5,1)
 		
-		rick.recibir([cable1,lata1,materiaOscura])
+		rick.recibir([unFleeb,otraLataMas,otroCable])
 		assert.equals(3,rick.mochila().size())
 		rick.realizar(bateria)
-		assert.equals(3,rick.mochila().size())
+		assert.equals(2,rick.mochila().size())
 	}
+
 
 	test "Rick: Realizar experimento circuito"{
 		var cable1 = new Cable(10,5)

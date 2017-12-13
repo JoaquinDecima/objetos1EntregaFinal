@@ -30,7 +30,7 @@ object rick {
 	}
 	
 	method experimentosQuePuedeRealizar(){
-		return self.experimentosQueSabeHacer().filter({e=>e.cumpleRequisitos(mochila,estrategia)})
+		return self.experimentosQueSabeHacer().filter({experimento=>experimento.cumpleRequisitos(mochila,estrategia)})
 	}
 
 	method experimentosQueSabeHacer() = #{circuito,bateria,shock}

@@ -14,16 +14,18 @@ class Fleeb inherits Material{
 	}
 	
 	override method cuantaElectricidadConduce(){
-		return materialesQueComio.map({material => material.cuantaElectricidadConduce()}).min()
+		if (!materialesQueComio.isEmpty()) return materialesQueComio.map({material => material.cuantaElectricidadConduce()}).min()
+		return super()
 	}
 	
 	override method cuantaElectricidadGenera(){
-		return materialesQueComio.map({material => material.cuantaElectricidadGenera()}).max()
+			if (!materialesQueComio.isEmpty()) return materialesQueComio.map({material => material.cuantaElectricidadGenera()}).max()
+			return super()
 	}
 	
 	override method cantidadDeMetal(){
-		return materialesQueComio.sum({material => material.cantidadDeMetal()})
-	
+		if (!materialesQueComio.isEmpty()) return materialesQueComio.sum({material => material.cantidadDeMetal()})
+		return super()
 	}
 	
 	override method energiaQueResta(){

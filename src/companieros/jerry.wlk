@@ -3,7 +3,7 @@ import companieros.humores.buen_humor.*
 import companieros.humores.mal_humor.*
 import companieros.humores.sobreexitado.*
 
-object jerry inherits Companiero(){
+object jerry inherits Companiero{
 
 	var humor = buenHumor
 	
