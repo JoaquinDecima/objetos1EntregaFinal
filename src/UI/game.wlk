@@ -20,15 +20,21 @@ object juego {
 		
 		
 		E.onPressDo {game.say(rick, "Puedo hacer : "+ rick.experimentosQuePuedeRealizar()) }
-		D.onPressDo {morty.darObjetosA(rick)}
-		R.onPressDo {morty.recolectar(morty.queHayAqui().first())}
+		D.onPressDo {morty.darObjetosA(rick)
+					self.dibujarMochilaMorty(morty.mochila())
+					self.dibujarMochilaRick(rick.mochila())
+		}
+		R.onPressDo {morty.recolectar(morty.queHayAqui().first())
+					self.dibujarMochilaMorty(morty.mochila())
+		}
 		
-		M.onPressDo {game.say(morty,"Tengo " + self.listaATexto(morty.mochila()))}
-		N.onPressDo {game.say(rick,"Tengo " + self.listaATexto(rick.mochila()))	}
+		M.onPressDo {self.dibujarMochilaMorty(morty.mochila())}
+		N.onPressDo {self.dibujarMochilaRick(rick.mochila())}
 
 		NUM_1.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().get(0))}
 		NUM_2.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().get(1))}
 		NUM_3.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().get(2))}
+		//despues de realizar experimentos actualico la mochila
 
 		
 
@@ -36,7 +42,7 @@ object juego {
 		
 		
 		var cable=new CableMov(10,2)
-		var lata =new LataMov(500)
+		var lata =new LataMov(20)
 		var lataParaMateriaOscura =new LataMov(500)
 		var fleeb = new FleebMov(38)
 		var materiaOscura= new MateriaOscuraMov(lataParaMateriaOscura)
@@ -75,6 +81,35 @@ object juego {
 		return unaLista.fold("",{acum,item => acum + item + ", "})
 		
 		
+	}
+	
+	method dibujarMochilaMorty(unaLista){
+		self.dibujarMochila(unaLista,9,11)
+	}
+	method dibujarMochilaRick(unaLista){
+		
+		self.dibujarMochila(unaLista,5,7)
+	}
+	method dibujarMochila(unaLista,desde,hasta){
+		self.limpiarPanel(desde,hasta)
+		var a=desde
+		unaLista.forEach({m=>
+								new Position(a,7).drawElement(m)
+								a+=1
+			
+		})
+		
+	}
+	method limpiarPanel(desde,hasta){
+		(desde..hasta).forEach({e=>game.removeVisual(self.objetoEnCelda(game.at(e,7)))})
+		
+	}
+	method objetoEnCelda(posicion){
+		if (game.getObjectsIn(posicion).isEmpty()){
+			return null
+		}else{
+			return game.getObjectsIn(posicion).first()
+		}
 	}
 }
 
