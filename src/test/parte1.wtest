@@ -13,10 +13,13 @@ describe "Test parte 1" {
 	var fleeb = new Fleeb(14)
 	var otraLata = new Lata (10)
 	var materiaOscura = new MateriaOscura(cable)
-	var companieroPower = new Companiero(500)
-	var companieroDebil = new Companiero(1)
+	var companieroPower = new Companiero()
+	var companieroDebil = new Companiero()
 	
 	fixture{
+		companieroDebil.energia(1)
+		companieroPower.energia(500)
+		
 		fleeb.comerMaterial(otraLata)
 	}
 	

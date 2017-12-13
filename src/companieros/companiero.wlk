@@ -9,6 +9,8 @@ class Companiero{
 	var companiero
 	var mochila = []
 	
+	
+	
 	//lo utiliza parasitosAlienigenas
 	method companiero(unCompaniero){ //Provisorio, luego habra que incluirlo dentro del constructor. No lo hice para q no rompa
 		companiero=unCompaniero
@@ -72,4 +74,4 @@ class Companiero{
 	}
 }
 
-object morty inherits Companiero(100){}
+object morty inherits Companiero{}
