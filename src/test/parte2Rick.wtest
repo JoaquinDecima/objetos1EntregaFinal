@@ -52,6 +52,8 @@ describe "Test sobre Rick"{
 		assert.equals(#{bateria,circuito,shock},rick.experimentosQuePuedeRealizar())
 	}
 	
+		
+	
 	
 	test "Rick: Realizar experimento bateria"{
 		var unFleeb = new Fleeb(20)

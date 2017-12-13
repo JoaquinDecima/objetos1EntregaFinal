@@ -36,9 +36,13 @@ class Circuito inherits Material{
 	
 	var componentes
 	
+	
+	
 	constructor (_componentes){
 		componentes=_componentes
 	}
+	
+	method imagen()="assets/circuito.png"
 	
 	override method cuantaElectricidadGenera() = 0
 	
@@ -57,6 +61,8 @@ class Bateria inherits Material{
 	constructor (_componentes){
 		componentes=_componentes
 	}
+	
+	method imagen()="assets/bateria.png"
 	
 	override method cuantaElectricidadGenera() = 2 * self.cantidadDeMetal()
 	
