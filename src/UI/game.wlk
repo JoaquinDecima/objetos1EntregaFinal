@@ -14,21 +14,36 @@ object juego {
 	method inicio(){	//CONFIGURACIÓN 
 		
 		self.cargarLayout()
+		self.cargarSplashScreen()
+		ENTER.onPressDo{self.cargarJuego()} 	
+		
+	
+	}
+	method cargarJuego(){
+		game.clear()
+		self.cargarLayout()
+		self.cargarFondoJuego()
+		
 		self.colocarMateriales()	
 		self.colocarBordes()
 		self.cargarShortcuts()
 		self.cargarPersonajes()
+		//ENTER.onPressDo{null}
 		
- 		game.start()
-	
+		
 	}
 	
-	
+	method cargarSplashScreen(){
+		new Position(0,0).drawElement(splash)
+	}
+	method cargarFondoJuego(){
+		new Position(0,0).drawElement(fondo)
+	}
 	method cargarLayout(){
 		game.title("Rick & Morty")
 		game.height(8)
 		game.width(16)
-		new Position(0,0).drawElement(fondo)
+		
 	}
 	
 	method cargarPersonajes(){
@@ -85,14 +100,17 @@ object juego {
 		//Hacer experimentos
 		NUM_1.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().asList().get(0))
 						self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())
+						self.dibujarMochilaRick(rick.mochila())
 		
 		}
 		NUM_2.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().asList().get(1))
 						self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())
+						self.dibujarMochilaRick(rick.mochila())
 
 		}
 		NUM_3.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().asList().get(2))
 						self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())
+						self.dibujarMochilaRick(rick.mochila())
 		}
 		
 		
@@ -110,14 +128,15 @@ object juego {
 		
 	}
 	
-	method dibujarMochilaExperimentos(unaLista){
-		self.dibujarMochilaHorizontal(unaLista,5,7)
-	}
 	method dibujarMochilaMorty(unaLista){
 		self.dibujarMochilaHorizontal(unaLista,5,7)
 	}
+	method dibujarMochilaExperimentos(unaLista){
+		self.dibujarMochilaHorizontal(unaLista,9,12)
+	}
+
 	method dibujarMochilaRick(unaLista){
-		self.dibujarMochilaVertical(unaLista,7,10)
+		self.dibujarMochilaVertical(unaLista,7,3)
 	}
 	
 	method dibujarMochilaHorizontal(unaLista,desde,hasta){
@@ -131,11 +150,11 @@ object juego {
 		
 	}
 	method dibujarMochilaVertical(unaLista,desde,hasta){
-		self.limpiarPanelVertical(desde,hasta)
+		self.limpiarPanelVertical(hasta,desde)
 		var a=desde
 		unaLista.forEach({m=>
 								new Position(14,a).drawElement(m)
-								a+=1
+								a-=1
 			
 		})
 		
@@ -176,6 +195,9 @@ object menu{
 
 object fondo{
 	method imagen()= "assets/fondo.png"
+}
+object splash{
+	method imagen()= "assets/splash.png"
 }
 
 
