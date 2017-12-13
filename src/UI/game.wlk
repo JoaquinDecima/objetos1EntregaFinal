@@ -15,26 +15,28 @@ object juego {
 		new Position(0,0).drawElement(fondo)
 		
 		var morty =new MortyMov()
+		morty.energia(1000)
 		
 		new Position(0,0).drawElement(rick)
 		
 		
-		E.onPressDo {game.say(rick, "Puedo hacer : "+ rick.experimentosQuePuedeRealizar()) }
+		//E.onPressDo {game.say(rick, "Puedo hacer : "+ rick.experimentosQuePuedeRealizar()) }
+		E.onPressDo {self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())}
 		D.onPressDo {morty.darObjetosA(rick)
 					self.dibujarMochilaMorty(morty.mochila())
 					self.dibujarMochilaRick(rick.mochila())
 		}
-		R.onPressDo {morty.recolectar(morty.queHayAqui().first())
-					self.dibujarMochilaMorty(morty.mochila())
-		}
+		R.onPressDo {self.recolectarDelLugar(morty)}
 		
+	
+	
 		M.onPressDo {self.dibujarMochilaMorty(morty.mochila())}
 		N.onPressDo {self.dibujarMochilaRick(rick.mochila())}
 
 		NUM_1.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().get(0))}
 		NUM_2.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().get(1))}
 		NUM_3.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().get(2))}
-		//despues de realizar experimentos actualico la mochila
+		//despues de realizar experimentos actualico la mochila de rick
 
 		
 
@@ -42,9 +44,9 @@ object juego {
 		
 		
 		var cable=new CableMov(10,2)
-		var lata =new LataMov(20)
-		var lataParaMateriaOscura =new LataMov(500)
-		var fleeb = new FleebMov(38)
+		var lata =new LataMov(250)
+		var lataParaMateriaOscura =new LataMov(5)
+		var fleeb = new FleebMov(25)
 		var materiaOscura= new MateriaOscuraMov(lataParaMateriaOscura)
 		var materiales =[cable,lata,fleeb,materiaOscura]	
 		
@@ -54,10 +56,14 @@ object juego {
 		//Incluyo varios materiales en tablero
 		var randomX = [1,2,3,4,5,6,7,8,9,10,11,12]
 		var randomY = [0,1,2,3]
-		var cantidadDeMateriales=6
+		var cantidadDeMateriales=1
 		
 		
-		(1..cantidadDeMateriales).forEach({new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())})
+		(1..cantidadDeMateriales).forEach({new Position(randomX.anyOne(),randomY.anyOne()).drawElement(cable)})
+		(1..cantidadDeMateriales).forEach({new Position(randomX.anyOne(),randomY.anyOne()).drawElement(lata)})
+		(1..cantidadDeMateriales).forEach({new Position(randomX.anyOne(),randomY.anyOne()).drawElement(fleeb)})
+		(1..cantidadDeMateriales).forEach({new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiaOscura)})
+		
 		
 		
 		
@@ -83,6 +89,9 @@ object juego {
 		
 	}
 	
+	method dibujarMochilaExperimentos(unaLista){
+		self.dibujarMochila(unaLista,1,4)
+	}
 	method dibujarMochilaMorty(unaLista){
 		self.dibujarMochila(unaLista,9,11)
 	}
@@ -110,6 +119,12 @@ object juego {
 		}else{
 			return game.getObjectsIn(posicion).first()
 		}
+	}
+	
+	method recolectarDelLugar(unCompaniero){
+		if (unCompaniero.queHayAqui().isEmpty()) self.error ("Acá no hay nada para recolectar!")
+		unCompaniero.recolectar(unCompaniero.queHayAqui().first())
+		self.dibujarMochilaMorty(unCompaniero.mochila())
 	}
 }
 

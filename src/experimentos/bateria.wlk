@@ -3,6 +3,8 @@ import materiales.material.*
 
 
 object bateria inherits Experimento{
+	
+	method imagen()="assets/bateria.png"
 	 
  	override method materialesQueRequiere(mochila,estrategia){
  		return estrategia.seleccion().apply(

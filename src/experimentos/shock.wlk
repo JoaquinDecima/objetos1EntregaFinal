@@ -2,6 +2,8 @@ import experimento.*
 
 	 
 object shock inherits Experimento{
+	
+	method imagen()="assets/shock.png"
 
 	override method materialesQueRequiere(mochila,estrategia){
 		return mochila.filter({unMaterial=>unMaterial.cuantaElectricidadConduce() >= 1}) +

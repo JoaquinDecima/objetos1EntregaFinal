@@ -24,8 +24,9 @@ class Fleeb inherits Material{
 	}
 	
 	override method cantidadDeMetal(){
-		if (!materialesQueComio.isEmpty()) return materialesQueComio.sum({material => material.cantidadDeMetal()})
-		return super()
+		//if (!materialesQueComio.isEmpty()) return materialesQueComio.sum({material => material.cantidadDeMetal()})
+	//	return super()
+		return materialesQueComio.sum({material => material.cantidadDeMetal()})
 	}
 	
 	override method energiaQueResta(){
