@@ -48,18 +48,27 @@ object juego {
 		//Incluyo varios materiales en tablero
 		var randomX = [1,2,3,4,5,6,7,8,9,10,11,12]
 		var randomY = [0,1,2,3]
-		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
-		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
-		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
-		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
-		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
-		new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())
+		var cantidadDeMateriales=6
 		
+		
+		(1..cantidadDeMateriales).forEach({new Position(randomX.anyOne(),randomY.anyOne()).drawElement(materiales.anyOne())})
+		
+		
+		
+		(0 .. 12).forEach { n => self.dibujarMultiples(new BordeArriba(), new Position(n, 4)) } // bordeArriba  
+		(0 .. 3).forEach { n => self.dibujarMultiples(new BordeDerecha(), new Position(13, n)) } // bordeDer
+		(0 .. 12).forEach { n => self.dibujarMultiples(new BordeAbajo(), new Position(n, -1)) } // bordeDer
+		(0 .. 3).forEach { n => self.dibujarMultiples(new BordeIzquierda(), new Position(-1, n)) } // bordeDer
 	
 		
 		game.addVisualCharacter(morty)
 		game.start()
 	
+	}
+	
+	method dibujarMultiples(elemento, posicion) {
+		posicion.drawElement(elemento)
+		game.whenCollideDo(elemento, { player => elemento.empuja(player) })
 	}
 	
 	method listaATexto(unaLista){
@@ -113,5 +122,34 @@ class MortyMov inherits Companiero {
 		game.removeVisual(unMaterial)
 		
 		
+	}
+	
+	
+}
+
+class Borde {
+	const imagen = "assets/borde.png"
+}
+class BordeArriba inherits Borde {
+	method empuja(granjero) {
+		granjero.abajo()
+	}
+}
+
+class BordeAbajo inherits Borde {
+	method empuja(granjero) {
+		granjero.arriba()
+	}
+}
+
+class BordeIzquierda inherits Borde{
+	method empuja(granjero) {
+		granjero.derecha()
+	}
+}
+
+class BordeDerecha inherits Borde {
+	method empuja(granjero) {
+		granjero.izquierda()
 	}
 }
