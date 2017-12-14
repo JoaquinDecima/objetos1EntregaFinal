@@ -26,7 +26,7 @@ object shock inherits Experimento{
 	
 	override method realizar(unRick){
 		super(unRick)
-		unRick.companiero().energia(unRick.companiero().energia()-self.energiaQueSuma())
+		unRick.companiero().energia(unRick.companiero().energia()+self.energiaQueSuma())
 	}
 	
 	method energiaQueSuma(){

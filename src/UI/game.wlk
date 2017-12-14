@@ -47,6 +47,7 @@ object juego {
 		morty.energia(1000)
 		game.addVisualCharacter(morty)
 		
+		rick.companiero(morty)
 		new Position(0,0).drawElement(rick)
 		
 	}
