@@ -16,9 +16,12 @@ class Material{
 		
 	method puedeConducirElectricidad() = self.cuantaElectricidadConduce() > 0
 	
-	method alterarPersonalidadDe(unPersonaje){} //para polimorfismo de materiales. Solo lo usa parasitoAlienigena
-
 	method cantidadDeMetal() 
+	
+	method serRecolectado(unCompaniero){
+		unCompaniero.consumirEnergia(self.energiaQueResta())
+		
+	}
 	
 	//Corregimos la forma de igualdad de los materiales
 	//Dos materiales con iguales caracteristicas son iguales pero no identicos (===)

@@ -13,7 +13,6 @@ class Experimento{
 	method materialesQueRequiere(mochila, unaEstrategia)
 	
 	method cumpleRequisitos(mochila, unaEstrategia) {
-		//return not self.materialesQueRequiere(mochila,unaEstrategia).isEmpty()
 		try{
 			//este metodo rompe si no tiene los materiales que se requiere
 			if (self.materialesQueRequiere(mochila,unaEstrategia).isEmpty()){

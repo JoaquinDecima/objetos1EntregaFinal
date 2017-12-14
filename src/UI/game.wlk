@@ -28,9 +28,6 @@ object juego {
 		self.colocarBordes()
 		self.cargarShortcuts()
 		self.cargarPersonajes()
-		//ENTER.onPressDo{null}
-		
-		
 	}
 	
 	method cargarSplashScreen(){
@@ -85,8 +82,7 @@ object juego {
 		
 		D.onPressDo {morty.darObjetosA(rick)
 					self.dibujarMochilaMorty(morty.mochila())
-					self.dibujarMochilaRick(rick.mochila())
-					self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())
+					self.refrescarMochilasRick()
 		}
 		
 		E.onPressDo {self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())}
@@ -99,34 +95,28 @@ object juego {
 
 
 		//Hacer experimentos
-		NUM_1.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().asList().get(0))
-						self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())
-						self.dibujarMochilaRick(rick.mochila())
+		NUM_1.onPressDo {self.realizarExperimentoPosicion(0)}
+		NUM_2.onPressDo {self.realizarExperimentoPosicion(1)}
+		NUM_3.onPressDo {self.realizarExperimentoPosicion(2)}
 		
-		}
-		NUM_2.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().asList().get(1))
-						self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())
-						self.dibujarMochilaRick(rick.mochila())
-
-		}
-		NUM_3.onPressDo {rick.realizar(rick.experimentosQuePuedeRealizar().asList().get(2))
-						self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())
-						self.dibujarMochilaRick(rick.mochila())
-		}
 		
 		
 		
 		
 	}
+	method realizarExperimentoPosicion(unaPosicion){
+			rick.realizar(rick.experimentosQuePuedeRealizar().asList().get(unaPosicion))
+			self.refrescarMochilasRick()
+	}
+		
 	method dibujarMultiples(elemento, posicion) {
 		posicion.drawElement(elemento)
 		game.whenCollideDo(elemento, { player => elemento.empuja(player) })
 	}
 	
-	method listaATexto(unaLista){
-		return unaLista.fold("",{acum,item => acum + item + ", "})
-		
-		
+	method refrescarMochilasRick(){
+		self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())
+		self.dibujarMochilaRick(rick.mochila())
 	}
 	
 	method dibujarMochilaMorty(unaLista){

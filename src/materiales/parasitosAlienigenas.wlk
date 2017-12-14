@@ -14,8 +14,12 @@ class ParasitoAlienigena inherits Material{
 	
 	override method cuantaElectricidadGenera() = 5
 	
-	override method alterarPersonalidadDe(unPersonaje){ 
+	method alterarPersonalidadDe(unPersonaje){ 
 		acciones.forEach({accion=>accion.aplicar(unPersonaje)})
+	}
+	override method serRecolectado(unCompaniero){
+		super(unCompaniero)
+		self.alterarPersonalidadDe(unCompaniero)
 	}
 	
 }
