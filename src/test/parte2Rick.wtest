@@ -38,18 +38,23 @@ describe "Test sobre Rick"{
 	test "Rick: Experimentos que PUEDE hacer NINGUNO"{
 		var mochila = [] 
 		rick.recibir(mochila)
-		assert.throwsExceptionWithMessage("Materiales insuficientes", {rick.experimentosQuePuedeRealizar()})
-		//assert.that(rick.experimentosQuePuedeRealizar().isEmpty())
-		
+		assert.that(rick.experimentosQuePuedeRealizar().isEmpty())
 	}
 	
 	test "Rick: Puede realizar todos los experimentos"{
+		//para la bateria
+		var lata = new Lata (201)
 		var unFleeb = new Fleeb(20)
-		unFleeb.comerMaterial(new Lata(1))
-		var otraLataMas = new Lata(250)
 		var otroCable = new Cable(5,1)
-		rick.recibir([unFleeb,otraLataMas,otroCable])
+		
+		rick.recibir([lata,unFleeb])
+		rick.realizar(bateria)
+		rick.recibir([lata,otroCable])
+		
+		
+
 		assert.equals(#{bateria,circuito,shock},rick.experimentosQuePuedeRealizar())
+
 	}
 	
 		
@@ -79,6 +84,9 @@ describe "Test sobre Rick"{
 
 		assert.equals(2,rick.mochila().size())
 	}
+
+	
+	
 }
 	
 	
