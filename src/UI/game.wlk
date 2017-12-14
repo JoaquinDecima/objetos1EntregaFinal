@@ -58,6 +58,7 @@ object juego {
 		var lata =new LataMov(250)
 		var lataParaMateriaOscura =new LataMov(5)
 		var fleeb = new FleebMov(25)
+		fleeb.comerMaterial(cable)
 		var materiaOscura= new MateriaOscuraMov(lataParaMateriaOscura)
 
 		
