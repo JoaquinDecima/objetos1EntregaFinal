@@ -51,5 +51,14 @@ describe "Tests parte 2"{
 		assert.equals(3,rick.mochila().size())
 	}
 	
-
+	test "Shock: Realizar"{
+		var cable1 = new Cable(10,5)
+		var unFleeb = new Fleeb(20)
+		unFleeb.comerMaterial(new Lata(1))
+		var otraLataMas = new Lata(250)
+		rick.recibir([cable1,unFleeb,otraLataMas])
+		bateria.realizar(rick)
+		shock.realizar(rick)
+		assert.that(rick.mochila().isEmpty())
+	}
 }

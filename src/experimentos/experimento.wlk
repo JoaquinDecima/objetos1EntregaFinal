@@ -15,10 +15,7 @@ class Experimento{
 	method cumpleRequisitos(mochila, unaEstrategia) {
 		try{
 			//este metodo rompe si no tiene los materiales que se requiere
-			if (self.materialesQueRequiere(mochila,unaEstrategia).isEmpty()){
-				return false
-			}
-			return true
+			return !(self.materialesQueRequiere(mochila,unaEstrategia).isEmpty())
 		} 
 		catch  e {
 			return false

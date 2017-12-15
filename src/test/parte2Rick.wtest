@@ -51,8 +51,6 @@ describe "Test sobre Rick"{
 		rick.realizar(bateria)
 		rick.recibir([lata,otroCable])
 		
-		
-
 		assert.equals(#{bateria,circuito,shock},rick.experimentosQuePuedeRealizar())
 
 	}
