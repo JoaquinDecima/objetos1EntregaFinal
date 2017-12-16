@@ -70,5 +70,3 @@ class Companiero{
 		self.darObjetosA(companiero)
 	}
 }
-
-object morty inherits Companiero{}

@@ -11,6 +11,7 @@ import materiales.estrategia.menorCantidadMetal.*
 object rick {
 	
 	var mochila =[]
+	var morty = new Companiero()
 	var companiero = morty 
 	var estrategia = alAzar
 	

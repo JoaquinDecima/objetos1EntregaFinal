@@ -24,10 +24,14 @@ describe "Test parte 1" {
 	}
 	
 	test "Morty puede recolectar una lata" {
+		var morty = new Companiero()
+		morty.energia(100)
 		assert.that(morty.puedeRecolectar(lata))
 	}
 	
 	test "Morty recolecta un cable"{
+		var morty = new Companiero()
+		morty.energia(100)
 		morty.recolectar(cable)
 		assert.equals(1,morty.mochila().size())
 		assert.equals(99.80,morty.energia())
@@ -35,6 +39,8 @@ describe "Test parte 1" {
 	
 	
 	test "Morty recolecta a fleeb"{
+		var morty = new Companiero()
+		morty.energia(100)
 		morty.recolectar(fleeb)
 		assert.equals(1,morty.mochila().size())
 		assert.equals(90,morty.energia())
@@ -55,6 +61,8 @@ describe "Test parte 1" {
 	
 	
 	test "morty le pasa sus materiales a rick"{
+		var morty = new Companiero()
+		morty.energia(100)
 		morty.recolectar(lata)
 		morty.recolectar(cable)
 		morty.darObjetosA(rick)

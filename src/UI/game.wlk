@@ -10,6 +10,8 @@ import UI.bordes.*
 
 object juego {
 	var morty =new MortyMov()
+	var summer = new SummerMov()
+	var personaje = morty
 	
 	method inicio(){	//CONFIGURACIÓN 
 		
@@ -45,9 +47,16 @@ object juego {
 	
 	method cargarPersonajes(){
 		morty.energia(1000)
+		summer.energia(1000)
+		morty.swaper(summer)
+		summer.swaper(morty)
+		morty.salir()
+		summer.salir()
+		personaje.entrar()
 		game.addVisualCharacter(morty)
+		game.addVisualCharacter(summer)
 		
-		rick.companiero(morty)
+		rick.companiero(personaje)
 		new Position(0,0).drawElement(rick)
 		
 	}
@@ -79,21 +88,29 @@ object juego {
 	method cargarShortcuts(){
 		
 		//cargo shortcuts
-		R.onPressDo {self.recolectarDelLugar(morty)}
+		R.onPressDo {self.recolectarDelLugar(personaje)}
 		
-		D.onPressDo {morty.darObjetosA(rick)
-					self.dibujarMochilaMorty(morty.mochila())
+		D.onPressDo {personaje.darObjetosA(rick)
+					self.dibujarMochilaMorty(personaje.mochila())
 					self.refrescarMochilasRick()
 		}
 		
 		E.onPressDo {self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())}
 		
-		M.onPressDo {self.dibujarMochilaMorty(morty.mochila())}
+		M.onPressDo {self.dibujarMochilaMorty(personaje.mochila())}
 		N.onPressDo {self.dibujarMochilaRick(rick.mochila())}
 		
 		P.onPressDo {self.mostrarMenu()}
 		ENTER.onPressDo {self.ocultarMenu()}
-
+		
+		//Cambiar Personaje
+		U.onPressDo {
+			personaje.salir()
+			personaje = personaje.swap()
+			personaje.entrar()
+			self.dibujarMochilaMorty(personaje.mochila())
+			self.refrescarMochilasRick()
+		}
 
 		//Hacer experimentos
 		NUM_1.onPressDo {self.realizarExperimentoPosicion(0)}

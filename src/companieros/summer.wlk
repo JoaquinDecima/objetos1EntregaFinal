@@ -1,6 +1,6 @@
 import companieros.companiero.*
 
-object summer inherits Companiero{
+class Summer inherits Companiero{
 
 	override method cantMaxMochila() = 2
 	

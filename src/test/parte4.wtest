@@ -16,6 +16,8 @@ import materiales.estrategia.ecologico.*
 import materiales.material.*
 
 test "Parasito alienigena se agrego a la mochila" {
+		var morty = new Companiero()
+		morty.energia(100)
 		var pa=new ParasitoAlienigena([])
 		morty.recolectar(pa)
 		assert.that(morty.mochila().contains(pa))
@@ -28,7 +30,8 @@ test "Parasito Alienigena cambio comportamiento" {
 		var accion3 = new RecolectarMaterialOculto(unMaterial)
 		var accion4 = new ModificarEnergia(10)
 		
-		
+		var morty = new Companiero()
+		morty.energia(100)
 		morty.companiero(rick) 
 		var pa=new ParasitoAlienigena([accion1,accion2,accion3,accion4])
 		assert.equals(100,morty.energia())
@@ -39,7 +42,8 @@ test "Parasito Alienigena cambio comportamiento" {
 test "Accion Entregar Todo" {
 		var a= new Lata (10)
 		var b= new Lata (10)
-		
+		var morty = new Companiero()
+		morty.energia(100)
 		morty.companiero(rick) //provisorio
 		
 		var accion = new EntregarTodo()
@@ -62,7 +66,9 @@ test "Accion Quitar Uno al azar" {
 		
 		var accion = new QuitarUnoAlAzar()
 		var pa=new ParasitoAlienigena([accion])
-		
+		var morty = new Companiero()
+	
+		morty.energia(100)
 
 		morty.recolectar(a)
 		morty.recolectar(b)
@@ -74,7 +80,9 @@ test "Accion Quitar Uno al azar" {
 test "Accion : Modificar energia"{
 		var accion = new ModificarEnergia(-5)
 		var pa=new ParasitoAlienigena([accion])
+		var morty = new Companiero()
 		
+		morty.energia(100)
 		assert.equals(100,morty.energia())
 		morty.recolectar(pa)	//pierde 10 de energia al recolectar
 		assert.equals(85,morty.energia())
@@ -83,6 +91,8 @@ test "Accion : Modificar energia"{
 test "Accion : Recolectar material oculto"{
 		var lata =new Lata(1)
 		var accion = new RecolectarMaterialOculto([lata])
+		var morty = new Companiero()
+		morty.energia(100)
 		assert.equals([],morty.mochila())
 
 }

@@ -10,7 +10,13 @@ import materiales.fleeb.*
 test "Recogen lata" {
 	
 	var lata = new Lata(50)
-	
+	var morty = new Companiero()
+	morty.energia(100)
+	var jerry = new Jerry()
+	jerry.energia(100)
+	var summer = new Summer()
+	summer.energia(100)
+		
 	morty.recolectar(lata)
 	jerry.recolectar(lata)
 	summer.recolectar(lata)
@@ -27,6 +33,12 @@ test "Jerry cambia de Humor"{
 	var lata = new Lata(50)
 	var servivo = new Fleeb(30)
 	servivo.comerMaterial(lata)
+	var morty = new Companiero()
+	morty.energia(100)
+	var jerry = new Jerry()
+	jerry.energia(100)
+	var summer = new Summer()
+	summer.energia(100)
 	
 	assert.equals(jerry.humor(),buenHumor)
 	
