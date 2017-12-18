@@ -48,10 +48,13 @@ object juego {
 	method cargarPersonajes(){
 		morty.energia(1000)
 		summer.energia(1000)
+		
 		morty.swaper(summer)
 		summer.swaper(morty)
+		
 		morty.salir()
 		summer.salir()
+		
 		personaje.entrar()
 		game.addVisualCharacter(morty)
 		game.addVisualCharacter(summer)
@@ -97,8 +100,7 @@ object juego {
 		
 		E.onPressDo {self.dibujarMochilaExperimentos(rick.experimentosQuePuedeRealizar())}
 		
-		M.onPressDo {self.dibujarMochilaMorty(personaje.mochila())}
-		N.onPressDo {self.dibujarMochilaRick(rick.mochila())}
+
 		
 		P.onPressDo {self.mostrarMenu()}
 		ENTER.onPressDo {self.ocultarMenu()}
@@ -141,13 +143,24 @@ object juego {
 		self.dibujarMochilaHorizontal(unaLista,5,7)
 	}
 	method dibujarMochilaExperimentos(unaLista){
-		self.dibujarMochilaHorizontal(unaLista,9,12)
+		self.dibujarMochilaHorizontalExp(unaLista,9,12)
 	}
 
 	method dibujarMochilaRick(unaLista){
 		self.dibujarMochilaVertical(unaLista,7,3)
 	}
 	
+	method dibujarMochilaHorizontalExp(unaLista,desde,hasta){
+		self.limpiarPanel(desde,hasta)
+		var a=desde
+		unaLista.forEach({m=>
+								new Position(a,7).drawElement(m)
+								new Position(a,7).drawElement(new NroItem(a-desde+1))
+								a+=1
+			
+		})
+		
+	}
 	method dibujarMochilaHorizontal(unaLista,desde,hasta){
 		self.limpiarPanel(desde,hasta)
 		var a=desde
@@ -170,12 +183,18 @@ object juego {
 	}
 	
 	method limpiarPanelVertical(desde,hasta){
-		(desde..hasta).forEach({e=>game.removeVisual(self.objetoEnCelda(game.at(14,e)))})
+		//(desde..hasta).forEach({e=>game.removeVisual(self.objetoEnCelda(game.at(14,e)))})
+		(desde..hasta).forEach({e=>self.removerElementosEnCelda(game.at(14,e))})
 	}
 	method limpiarPanel(desde,hasta){
-		(desde..hasta).forEach({e=>game.removeVisual(self.objetoEnCelda(game.at(e,7)))})
+		(desde..hasta).forEach({e=>self.removerElementosEnCelda(game.at(e,7))})
 		
 	}
+	
+	method removerElementosEnCelda(celda){
+		game.getObjectsIn(celda).forEach({elemento=>game.removeVisual(elemento)})
+	}
+	
 	method objetoEnCelda(posicion){
 		if (game.getObjectsIn(posicion).isEmpty()){
 			return null
@@ -210,3 +229,15 @@ object splash{
 }
 
 
+
+class NroItem{
+	const nro
+	constructor (unNro){
+		nro=unNro
+	}
+	method imagen(){
+		if (nro==1) return "assets/experimento1.png"
+		if (nro==2) return "assets/experimento2.png"
+		return "assets/experimento3.png"		
+	}
+}
