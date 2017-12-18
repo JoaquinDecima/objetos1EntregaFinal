@@ -93,7 +93,10 @@ object juego {
 		//cargo shortcuts
 		R.onPressDo {self.recolectarDelLugar(personaje)}
 		
-		D.onPressDo {personaje.darObjetosA(rick)
+		
+		
+		D.onPressDo {if (not self.estaRickAqui()) self.error ("Acercate a Rick para darle la mochila!")
+					personaje.darObjetosA(rick)
 					self.dibujarMochilaMorty(personaje.mochila())
 					self.refrescarMochilasRick()
 		}
@@ -123,6 +126,9 @@ object juego {
 		
 		
 		
+	}
+	method estaRickAqui(){
+		return game.getObjectsIn(morty.posicion()).contains(rick)
 	}
 	method realizarExperimentoPosicion(unaPosicion){
 			rick.realizar(rick.experimentosQuePuedeRealizar().asList().get(unaPosicion))
@@ -154,18 +160,26 @@ object juego {
 		self.limpiarPanel(desde,hasta)
 		var a=desde
 		unaLista.forEach({m=>
-								new Position(a,7).drawElement(m)
-								new Position(a,7).drawElement(new NroItem(a-desde+1))
+								self.agregarItem(game.at(a,7),m)
+								self.agregarNroItem(a-desde+1,game.at(a,7))
+								//new Position(a,7).drawElement(new NroItem(a-desde+1))
 								a+=1
 			
 		})
 		
 	}
+	
+	method agregarItem(posicion, item){
+		new Position(posicion.x(),posicion.y()).drawElement(item)
+	}
+	method agregarNroItem(nro,posicion){
+		new Position(posicion.x(),posicion.y()).drawElement(new NroItem(nro))
+	}
 	method dibujarMochilaHorizontal(unaLista,desde,hasta){
 		self.limpiarPanel(desde,hasta)
 		var a=desde
 		unaLista.forEach({m=>
-								new Position(a,7).drawElement(m)
+								self.agregarItem(game.at(a,7),m)
 								a+=1
 			
 		})
@@ -175,7 +189,7 @@ object juego {
 		self.limpiarPanelVertical(hasta,desde)
 		var a=desde
 		unaLista.forEach({m=>
-								new Position(14,a).drawElement(m)
+								self.agregarItem(game.at(14,a),m)
 								a-=1
 			
 		})

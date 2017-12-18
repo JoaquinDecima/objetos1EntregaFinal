@@ -24,6 +24,7 @@ class MortyMov inherits Companiero {
 	
 	method imagen() = "assets/morty50.png"
 	
+	method posicion()=posicion
 	method izquierda() {
 		posicion.moveLeft(1)
 	}
