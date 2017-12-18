@@ -67,6 +67,8 @@ class SummerMov inherits Summer {
 	
 	method imagen() = "assets/summer.png"
 	
+	method posicion()=posicion
+	
 	method izquierda() {
 		posicion.moveLeft(1)
 	}
