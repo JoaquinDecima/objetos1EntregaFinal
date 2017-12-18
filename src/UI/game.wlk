@@ -112,11 +112,13 @@ object juego {
 		//Cambiar Personaje
 		U.onPressDo {
 			game.removeVisual(personaje)
-			//personaje.salir()
+			personaje.salir()
+			
 			personaje = personaje.swap()
 
 			game.addVisualCharacter(personaje)
 			personaje.entrar()			
+			
 			self.dibujarMochilaMorty(personaje.mochila())
 			self.refrescarMochilasRick()
 		}
