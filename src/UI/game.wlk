@@ -56,8 +56,9 @@ object juego {
 		summer.salir()
 		
 		personaje.entrar()
-		game.addVisualCharacter(morty)
-		game.addVisualCharacter(summer)
+		game.addVisualCharacter(personaje)
+//		game.addVisualCharacter(morty)
+//		game.addVisualCharacter(summer)
 		
 		rick.companiero(personaje)
 		new Position(0,0).drawElement(rick)
@@ -110,9 +111,12 @@ object juego {
 		
 		//Cambiar Personaje
 		U.onPressDo {
-			personaje.salir()
+			game.removeVisual(personaje)
+			//personaje.salir()
 			personaje = personaje.swap()
-			personaje.entrar()
+
+			game.addVisualCharacter(personaje)
+			personaje.entrar()			
 			self.dibujarMochilaMorty(personaje.mochila())
 			self.refrescarMochilasRick()
 		}
